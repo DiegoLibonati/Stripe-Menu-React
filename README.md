@@ -33,3 +33,7 @@ I made a web application that simulates a new style of navbar. It is not the tra
 `https://diegolibonati.github.io/DiegoLibonatiWeb/#/projects?q=Stripe%20menu%20app%20page`
 
 ## Video
+
+
+https://user-images.githubusercontent.com/99032604/199617642-cbe53bbe-07a3-4e08-a153-0b75c1994920.mp4
+
