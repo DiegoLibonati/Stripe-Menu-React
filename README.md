@@ -34,6 +34,47 @@ I made a web application that simulates a new style of navbar. It is not the tra
 
 ## Video
 
-
 https://user-images.githubusercontent.com/99032604/199617642-cbe53bbe-07a3-4e08-a153-0b75c1994920.mp4
 
+## Documentation
+
+In the `svgs` folder we have all the images.
+In the `helpers/data.js` file we have all the information that we are going to use to render in the page as if it was the information of an API.
+In the `helpers/context.js` file we find the context that we use for the whole application to handle states and functions:
+
+This code block handles the system of opening or closing the navigation menu in the mobile version:
+
+```
+const [mobileMenu, setMobileMenu] = useState(false);
+
+const handleMobileMenuOpen = () => {
+    setMobileMenu(true);
+};
+
+const handleMobileMenuClose = () => {
+    setMobileMenu(false);
+};
+```
+
+This code block handles the system of opening or closing the navigation menu in the desktop version:
+
+```
+const [desktopMenu, setDesktopMenu] = useState(false);
+
+const handleDesktopMenuOpen = (text, centerBtn) => {
+    const page = sublinks.find((link) => link.page === text);
+    setPage(page);
+    setLocation(centerBtn);
+    setDesktopMenu(true);
+};
+
+const handleDesktopMenuClose = () => {
+    setDesktopMenu(false);
+};
+```
+
+The `page` state is in charge of rendering the different links for each navLink:
+
+```
+const [page, setPage] = useState({ page: "", links: [] });
+```
