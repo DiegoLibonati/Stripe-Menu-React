@@ -30,7 +30,7 @@ I made a web application that simulates a new style of navbar. It is not the tra
 
 ## Portfolio Link
 
-`https://diegolibonati.github.io/DiegoLibonatiWeb/#/projects?q=Stripe%20menu%20app%20page`
+`https://diegolibonati.github.io/DiegoLibonatiWeb/#/projects?q=Stripe%20Menu%20App%20Page`
 
 ## Video
 
