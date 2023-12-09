@@ -16,21 +16,9 @@ I made a web application that simulates a new style of navbar. It is not the tra
 1. React JS
 2. CSS3
 
-## Galery
-
-![Stripe-menu-App-Page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/stripemenureact-0.jpg)
-
-![Stripe-menu-App-Page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/stripemenureact-1.jpg)
-
-![Stripe-menu-App-Page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/stripemenureact-2.jpg)
-
-![Stripe-menu-App-Page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/stripemenureact-3.jpg)
-
-![Stripe-menu-App-Page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/stripemenureact-4.jpg)
-
 ## Portfolio Link
 
-`https://diegolibonati.github.io/DiegoLibonatiWeb/#/projects?q=Stripe%20Menu%20App%20Page`
+[`https://www.diegolibonati.com.ar/#/project/35`](https://www.diegolibonati.com.ar/#/project/35)
 
 ## Video
 
