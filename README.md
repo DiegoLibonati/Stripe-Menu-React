@@ -29,7 +29,7 @@ https://user-images.githubusercontent.com/99032604/199617642-cbe53bbe-07a3-4e08-
 
 In the `assets` folder we have all the images.
 In the `helpers/data.ts` file we have all the information that we are going to use to render in the page as if it was the information of an API.
-In the `helpers/context.tsx` file we find the context that we use for the whole application to handle states and functions:
+In the `contexts/context.tsx` file we find the context that we use for the whole application to handle states and functions:
 
 This code block handles the system of opening or closing the navigation menu in the mobile version:
 
