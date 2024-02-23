@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Submenu from "./components/Submenu";
 
-function App() {
+function App(): JSX.Element {
   return (
     <>
       <Navbar></Navbar>
