@@ -1,4 +1,4 @@
-# Stripe-Menu-React
+# Stripe Menu React
 
 ## Getting Started
 
