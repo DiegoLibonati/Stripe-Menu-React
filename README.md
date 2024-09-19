@@ -1,4 +1,4 @@
-# Stripe-Menu-App-Page
+# Stripe-Menu-React
 
 ## Getting Started
 
@@ -19,7 +19,7 @@ I made a web application that simulates a new style of navbar. It is not the tra
 
 ## Portfolio Link
 
-[`https://www.diegolibonati.com.ar/#/project/35`](https://www.diegolibonati.com.ar/#/project/35)
+[`https://www.diegolibonati.com.ar/#/project/Stripe-Menu-React`](https://www.diegolibonati.com.ar/#/project/Stripe-Menu-React)
 
 ## Video
 
