@@ -1,16 +1,14 @@
-import phone from "../assets/phone.svg";
-import { useGlobalContext } from "../contexts/context";
-import "../Hero.css";
+import { useGlobalContext } from "../../contexts/context";
+
+import phone from "../../assets/phone.svg";
+
+import "./Hero.css";
 
 const Hero = (): JSX.Element => {
   const { handleDesktopMenuClose } = useGlobalContext()!;
 
-  const handleDesktopClose: React.MouseEventHandler<HTMLElement> = () => {
-    handleDesktopMenuClose();
-  };
-
   return (
-    <section className="hero_container" onMouseOver={handleDesktopClose}>
+    <section className="hero_container" onMouseOver={handleDesktopMenuClose}>
       <article className="hero_container_information">
         <h1>
           Payments infrastructure <br />
@@ -21,7 +19,9 @@ const Hero = (): JSX.Element => {
           Stripe’s software and APIs to accept payments, send payouts, and
           manage their businesses online
         </p>
-        <button type="button">Start now</button>
+        <button type="button" aria-label="start now">
+          Start now
+        </button>
       </article>
 
       <article className="hero_container_phone">

@@ -1,7 +1,11 @@
-import logo from "../assets/logo.svg";
+import { useGlobalContext } from "../../contexts/context";
+
+import { subLinks } from "../../constants/data";
+
 import { FaBars } from "react-icons/fa";
-import { useGlobalContext } from "../contexts/context";
-import "../Navbar.css";
+import logo from "../../assets/logo.svg";
+
+import "./Navbar.css";
 
 const Navbar = (): JSX.Element => {
   const {
@@ -32,44 +36,36 @@ const Navbar = (): JSX.Element => {
     >
       <div className="header_container_logo">
         <img src={logo} alt="logo"></img>
-        <FaBars id="bars" onClick={() => handleMobileMenuOpen()}></FaBars>
+        <button
+          className="btn-open-menu"
+          type="button"
+          aria-label="open menu"
+          onClick={handleMobileMenuOpen}
+        >
+          <FaBars id="bars"></FaBars>
+        </button>
       </div>
 
       <nav className="header_container_nav">
         <ul className="header_container_nav_list">
-          <li>
-            <button
-              type="button"
-              className="btn"
-              onMouseOver={(e) => openMenu(e)}
-            >
-              Products
-            </button>
-          </li>
-
-          <li>
-            <button
-              type="button"
-              className="btn"
-              onMouseOver={(e) => openMenu(e)}
-            >
-              Developers
-            </button>
-          </li>
-
-          <li>
-            <button
-              type="button"
-              className="btn"
-              onMouseOver={(e) => openMenu(e)}
-            >
-              Company
-            </button>
-          </li>
+          {subLinks.map((subLink) => {
+            return (
+              <li key={subLink.page}>
+                <button
+                  type="button"
+                  className="btn"
+                  aria-label={`button ${subLink.page}`}
+                  onMouseOver={(e) => openMenu(e)}
+                >
+                  {subLink.page}
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </nav>
 
-      <button type="button" className="sign-in">
+      <button type="button" className="sign-in" aria-label="sign in">
         Sign in
       </button>
     </header>

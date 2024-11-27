@@ -1,8 +1,5 @@
 // Types
 
-import { FaCreditCard } from "react-icons/fa";
-import { IconType } from "react-icons/lib";
-
 export type SubLink = {
   page: string;
   links: Link[];
@@ -13,11 +10,11 @@ export type Link = {
   url: string;
 };
 
-export type AppContextT = {
+export type AppContext = {
   mobileMenu: boolean;
   desktopMenu: boolean;
   location: number;
-  page: SubLink;
+  subLink: SubLink;
   handleMobileMenuClose: () => void;
   handleMobileMenuOpen: () => void;
   handleDesktopMenuClose: () => void;

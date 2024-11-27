@@ -1,8 +1,11 @@
-import sublinks from "../helpers/data";
+import { useGlobalContext } from "../../contexts/context";
+
+import { subLinks } from "../../constants/data";
+
 import { FaTimes } from "react-icons/fa";
-import { useGlobalContext } from "../contexts/context";
 import { FaCreditCard, FaBook, FaBriefcase } from "react-icons/fa";
-import "../Sidebar.css";
+
+import "./Sidebar.css";
 
 const Sidebar = () => {
   const { mobileMenu, handleMobileMenuClose } = useGlobalContext()!;
@@ -14,10 +17,16 @@ const Sidebar = () => {
       }
     >
       <aside className="sidebar_container">
-        <FaTimes id="close" onClick={() => handleMobileMenuClose()}></FaTimes>
+        <button
+          onClick={handleMobileMenuClose}
+          type="button"
+          aria-label="close menu"
+        >
+          <FaTimes id="close"></FaTimes>
+        </button>
 
         <ul className="sidebar_container_list">
-          {sublinks.map((item, index) => {
+          {subLinks.map((item, index) => {
             const { page, links } = item;
 
             return (
@@ -29,7 +38,7 @@ const Sidebar = () => {
                     const { label, url } = link;
 
                     return (
-                      <a key={index} href={url}>
+                      <a key={index} href={url} aria-label={`link ${label}`}>
                         {page === "Products" ? (
                           <FaCreditCard
                             style={{ marginRight: "1rem" }}

@@ -1,6 +1,6 @@
 import { SubLink } from "../entities/entities";
 
-export const sublinks: SubLink[] = [
+export const subLinks: SubLink[] = [
   {
     page: "Products",
     links: [
@@ -47,5 +47,3 @@ export const sublinks: SubLink[] = [
     ],
   },
 ];
-
-export default sublinks;

@@ -16,6 +16,11 @@
   height: 7rem;
 }
 
+.btn-open-menu {
+  background: none;
+  border: none;
+}
+
 #bars {
   font-size: 3rem;
   margin-right: 1rem;

@@ -1,13 +1,19 @@
 import React, { useContext, useState } from "react";
-import sublinks from "../helpers/data";
-import { AppContextT, AppProviderProps, SubLink } from "../entities/entities";
+
+import {
+  AppContext as AppContextT,
+  AppProviderProps,
+  SubLink,
+} from "../entities/entities";
+
+import { subLinks } from "../constants/data";
 
 export const AppContext = React.createContext<AppContextT | null>(null);
 
 export const AppProvider = ({ children }: AppProviderProps) => {
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
   const [desktopMenu, setDesktopMenu] = useState<boolean>(false);
-  const [page, setPage] = useState<SubLink>({ page: "", links: [] });
+  const [subLink, setSubLink] = useState<SubLink>({ page: "", links: [] });
   const [location, setLocation] = useState<number>(0);
 
   const handleMobileMenuOpen = (): void => {
@@ -19,8 +25,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   };
 
   const handleDesktopMenuOpen = (text: string, centerBtn: number): void => {
-    const page = sublinks.find((link) => link.page === text);
-    setPage(page!);
+    const subLink = subLinks.find((link) => link.page === text);
+    setSubLink(subLink!);
     setLocation(centerBtn);
     setDesktopMenu(true);
   };
@@ -33,7 +39,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     <AppContext.Provider
       value={{
         mobileMenu,
-        page,
+        subLink,
         desktopMenu,
         location,
         handleMobileMenuClose,
