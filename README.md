@@ -43,7 +43,6 @@ I made a web application that simulates a new style of navbar. It is not the tra
 "typescript": "^5.3.3"
 "jest": "^29.7.0"
 "jest-environment-jsdom": "^29.7.0"
-"jest-fixed-jsdom": "^0.0.9"
 "ts-jest": "^29.2.5"
 ```
 
