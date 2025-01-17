@@ -1,6 +1,6 @@
-import { SubLink } from "../../entities/entities";
+import { SubLink } from "../entities/entities";
 
-export const SUBLINKS_MOCK: SubLink[] = [
+export const mockSubLinks: SubLink[] = [
   {
     page: "Products",
     links: [

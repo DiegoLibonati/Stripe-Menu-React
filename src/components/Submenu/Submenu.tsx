@@ -23,12 +23,12 @@ const Submenu = (): JSX.Element => {
     <aside
       ref={subMenuHtml}
       className={
-        desktopMenu ? "submenu_container show-submenu" : "submenu_container"
+        desktopMenu ? "submenu submenu--show" : "submenu"
       }
     >
       <h3>{page}</h3>
 
-      <ul className="submenu_container_list">
+      <ul className="submenu__list">
         {links.map((link, index) => {
           const { label, url } = link;
           return (

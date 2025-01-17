@@ -13,10 +13,10 @@ const Sidebar = () => {
   return (
     <div
       className={
-        mobileMenu ? "sidebar-wrapper show-sidebar" : "sidebar-wrapper"
+        mobileMenu ? "sidebar__wrapper sidebar__wrapper--show" : "sidebar__wrapper"
       }
     >
-      <aside className="sidebar_container">
+      <aside className="sidebar">
         <button
           onClick={handleMobileMenuClose}
           type="button"
@@ -25,7 +25,7 @@ const Sidebar = () => {
           <FaTimes id="close"></FaTimes>
         </button>
 
-        <ul className="sidebar_container_list">
+        <ul className="sidebar__list">
           {subLinks.map((item, index) => {
             const { page, links } = item;
 
@@ -33,7 +33,7 @@ const Sidebar = () => {
               <li key={index}>
                 <h4>{page}</h4>
 
-                <div className="links_container">
+                <div className="sidebar__link">
                   {links.map((link, index) => {
                     const { label, url } = link;
 

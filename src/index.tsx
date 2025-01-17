@@ -4,6 +4,8 @@ import App from "./App";
 
 import { AppProvider } from "./contexts/context";
 
+import "./index.css";
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

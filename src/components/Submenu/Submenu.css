@@ -1,14 +1,14 @@
-.submenu_container {
+.submenu {
   display: none;
 }
 
 @media only screen and (min-width: 1024px) {
-  .submenu_container {
+  .submenu {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: column wrap;
-    background-color: #fff;
+    background-color: var(--white-color);
     position: absolute;
     visibility: hidden;
     opacity: 0;
@@ -22,19 +22,19 @@
     transition: visibility 1s, opacity 1s, transform 1s;
   }
 
-  .show-submenu {
+  .submenu--show {
     visibility: visible;
     opacity: 1;
     transition: visibility 1s, opacity 1s;
   }
 
-  .submenu_container h3 {
+  .submenu h3 {
     align-self: flex-start;
     font-size: 3rem;
     margin-bottom: 1rem;
   }
 
-  .submenu_container_list {
+  .submenu__list {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -43,19 +43,19 @@
     width: 100%;
   }
 
-  .submenu_container_list li {
+  .submenu__list li {
     padding: 1rem;
   }
 
-  .submenu_container_list li a {
+  .submenu__list li a {
     font-size: 2.5rem;
     text-decoration: none;
-    color: #000;
+    color: var(--black-color);
   }
 
   .icon {
     margin-right: 0.5rem;
     font-size: 1.5rem;
-    color: #000;
+    color: var(--black-color);
   }
 }

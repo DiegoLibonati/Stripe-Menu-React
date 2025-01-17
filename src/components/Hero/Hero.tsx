@@ -8,8 +8,8 @@ const Hero = (): JSX.Element => {
   const { handleDesktopMenuClose } = useGlobalContext()!;
 
   return (
-    <section className="hero_container" onMouseOver={handleDesktopMenuClose}>
-      <article className="hero_container_information">
+    <section className="hero" onMouseOver={handleDesktopMenuClose}>
+      <article className="hero__information">
         <h1>
           Payments infrastructure <br />
           for the internet
@@ -24,7 +24,7 @@ const Hero = (): JSX.Element => {
         </button>
       </article>
 
-      <article className="hero_container_phone">
+      <article className="hero__phone">
         <img src={phone} alt="phone"></img>
       </article>
     </section>

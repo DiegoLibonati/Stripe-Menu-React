@@ -7,7 +7,7 @@ import Sidebar from "./Sidebar";
 
 import { AppContext } from "../../contexts/context";
 
-import { SUBLINKS_MOCK } from "../../tests/constants/constants";
+import { mockSubLinks } from "../../tests/jest.constants";
 
 type RenderComponent = {
   mockAppProvider: AppContextT;
@@ -44,53 +44,65 @@ const renderComponent = ({
   };
 };
 
-test("It should render the close menu button, the list of items and all items with their respective title.", () => {
-  const { container } = renderComponent({ mobileMenu: false });
+jest.mock("../../constants/data.ts", () => ({
+  get subLinks() {
+    return mockSubLinks;
+  },
+}));
 
-  // eslint-disable-next-line
-  const root = container.querySelector(".sidebar-wrapper");
-  const btnCloseMenu = screen.getByRole("button", { name: /close menu/i });
-  const list = screen.getByRole("list");
-  const listItems = screen.getAllByRole("listitem");
+describe("Sidebar.tsx", () => {
+  describe("General Tests.", () => {
+    test("It should render the close menu button, the list of items and all items with their respective title.", () => {
+      const { container } = renderComponent({ mobileMenu: false });
 
-  for (let subLink of SUBLINKS_MOCK) {
-    const heading = screen.getByRole("heading", { name: subLink.page });
+      // eslint-disable-next-line
+      const root = container.querySelector(".sidebar__wrapper");
+      const btnCloseMenu = screen.getByRole("button", { name: /close menu/i });
+      const list = screen.getByRole("list");
+      const listItems = screen.getAllByRole("listitem");
 
-    expect(heading).toBeInTheDocument();
+      for (let subLink of mockSubLinks) {
+        const heading = screen.getByRole("heading", { name: subLink.page });
 
-    for (let link of subLink.links) {
-      const anchor = screen.getByRole("link", { name: `link ${link.label}` });
+        expect(heading).toBeInTheDocument();
 
-      expect(anchor).toBeInTheDocument();
-      expect(anchor).toHaveAttribute("href", link.url);
-    }
-  }
+        for (let link of subLink.links) {
+          const anchor = screen.getByRole("link", {
+            name: `link ${link.label}`,
+          });
 
-  expect(root).toBeInTheDocument();
-  expect(root?.classList.contains("show-sidebar")).toBeFalsy();
-  expect(btnCloseMenu).toBeInTheDocument();
-  expect(list).toBeInTheDocument();
-  expect(listItems).toHaveLength(SUBLINKS_MOCK.length);
-});
+          expect(anchor).toBeInTheDocument();
+          expect(anchor).toHaveAttribute("href", link.url);
+        }
+      }
 
-test("It must render the root with the class 'show-sidebar' if 'mobileMenu' is 'true'.", () => {
-  const { container } = renderComponent({ mobileMenu: true });
+      expect(root).toBeInTheDocument();
+      expect(root?.classList.contains("sidebar__wrapper--show")).toBeFalsy();
+      expect(btnCloseMenu).toBeInTheDocument();
+      expect(list).toBeInTheDocument();
+      expect(listItems).toHaveLength(mockSubLinks.length);
+    });
 
-  // eslint-disable-next-line
-  const root = container.querySelector(".sidebar-wrapper");
+    test("It must render the root with the class 'sidebar__wrapper--show' if 'mobileMenu' is 'true'.", () => {
+      const { container } = renderComponent({ mobileMenu: true });
 
-  expect(root).toBeInTheDocument();
-  expect(root?.classList.contains("show-sidebar")).toBeTruthy();
-});
+      // eslint-disable-next-line
+      const root = container.querySelector(".sidebar__wrapper");
 
-test("It must execute the function 'handleMobileMenuClose' if you click on 'close menu'.", async () => {
-  const { mockAppProvider } = renderComponent({ mobileMenu: false });
+      expect(root).toBeInTheDocument();
+      expect(root?.classList.contains("sidebar__wrapper--show")).toBeTruthy();
+    });
 
-  const btnCloseMenu = screen.getByRole("button", { name: /close menu/i });
+    test("It must execute the function 'handleMobileMenuClose' if you click on 'close menu'.", async () => {
+      const { mockAppProvider } = renderComponent({ mobileMenu: false });
 
-  expect(btnCloseMenu).toBeInTheDocument();
+      const btnCloseMenu = screen.getByRole("button", { name: /close menu/i });
 
-  await user.click(btnCloseMenu);
+      expect(btnCloseMenu).toBeInTheDocument();
 
-  expect(mockAppProvider.handleMobileMenuClose).toHaveBeenCalledTimes(1);
+      await user.click(btnCloseMenu);
+
+      expect(mockAppProvider.handleMobileMenuClose).toHaveBeenCalledTimes(1);
+    });
+  });
 });

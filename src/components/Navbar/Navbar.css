@@ -1,4 +1,4 @@
-.header_container {
+.header {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,7 +8,7 @@
   position: fixed;
 }
 
-.header_container_logo {
+.header__logo {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,7 +16,7 @@
   height: 7rem;
 }
 
-.btn-open-menu {
+.header__logo__btn {
   background: none;
   border: none;
 }
@@ -24,19 +24,19 @@
 #bars {
   font-size: 3rem;
   margin-right: 1rem;
-  color: #fff;
+  color: var(--white-color);
 }
 
-.header_container_nav {
+.header__nav {
   display: none;
 }
 
-.sign-in {
+.header__sign__in {
   display: none;
 }
 
 @media only screen and (min-width: 1024px) {
-  .header_container {
+  .header {
     flex-flow: row wrap;
     width: 90%;
     justify-content: space-between;
@@ -44,7 +44,7 @@
     position: relative;
   }
 
-  .header_container_nav {
+  .header__nav {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,7 +53,7 @@
     height: 100%;
   }
 
-  .header_container_nav_list {
+  .header__nav__list {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,22 +62,22 @@
     list-style: none;
   }
 
-  .header_container_nav_list li button {
+  .header__nav__list li button {
     font-size: 2rem;
     background: none;
     border: none;
     margin: 0 3rem 0 3rem;
-    color: #fff;
+    color: var(--white-color);
   }
 
-  .sign-in {
+  .header__sign__in {
     display: block;
     font-size: 2rem;
-    background-color: #000;
+    background-color: var(--black-color);
     border: none;
     border-radius: 1rem;
     padding: 0.5rem;
-    color: #fff;
+    color: var(--white-color);
     position: absolute;
     right: 0;
     margin-right: 1rem;
