@@ -16,12 +16,12 @@
   height: 7rem;
 }
 
-.header__logo__btn {
+.header__logo-btn {
   background: none;
   border: none;
 }
 
-#bars {
+.header__logo-btn-bars {
   font-size: 3rem;
   margin-right: 1rem;
   color: var(--white-color);
@@ -31,7 +31,7 @@
   display: none;
 }
 
-.header__sign__in {
+.header__sign-in {
   display: none;
 }
 
@@ -44,6 +44,10 @@
     position: relative;
   }
 
+  .header__logo-btn-bars {
+    display: none;
+  }
+
   .header__nav {
     display: flex;
     align-items: center;
@@ -53,7 +57,7 @@
     height: 100%;
   }
 
-  .header__nav__list {
+  .header__nav-list {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,7 +66,7 @@
     list-style: none;
   }
 
-  .header__nav__list li button {
+  .header__nav-list-item-btn {
     font-size: 2rem;
     background: none;
     border: none;
@@ -70,7 +74,7 @@
     color: var(--white-color);
   }
 
-  .header__sign__in {
+  .header__sign-in {
     display: block;
     font-size: 2rem;
     background-color: var(--black-color);
@@ -81,9 +85,5 @@
     position: absolute;
     right: 0;
     margin-right: 1rem;
-  }
-
-  #bars {
-    display: none;
   }
 }

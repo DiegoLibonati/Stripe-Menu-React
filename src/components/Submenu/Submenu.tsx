@@ -22,29 +22,34 @@ const Submenu = (): JSX.Element => {
   return (
     <aside
       ref={subMenuHtml}
-      className={
-        desktopMenu ? "submenu submenu--show" : "submenu"
-      }
+      className={desktopMenu ? "submenu submenu--show" : "submenu"}
     >
-      <h3>{page}</h3>
+      <h3 className="submenu__page">{page}</h3>
 
       <ul className="submenu__list">
         {links.map((link, index) => {
           const { label, url } = link;
           return (
-            <li key={index}>
-              <a href={url} aria-label={`link ${label}`}>
+            <li key={index} className="submenu__list-item">
+              <a
+                href={url}
+                aria-label={`link ${label}`}
+                className="submenu__list-item-link"
+              >
                 {page === "Products" ? (
                   <FaCreditCard
                     style={{ marginRight: "1rem" }}
-                    className="icon"
+                    className="submenu__list-item-link-icon"
                   />
                 ) : page === "Developers" ? (
-                  <FaBook style={{ marginRight: "1rem" }} className="icon" />
+                  <FaBook
+                    style={{ marginRight: "1rem" }}
+                    className="submenu__list-item-link-icon"
+                  />
                 ) : (
                   <FaBriefcase
                     style={{ marginRight: "1rem" }}
-                    className="icon"
+                    className="submenu__list-item-link-icon"
                   />
                 )}
                 {label}

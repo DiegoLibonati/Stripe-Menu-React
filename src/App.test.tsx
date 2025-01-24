@@ -38,27 +38,23 @@ describe("App.tsx", () => {
 
       // eslint-disable-next-line
       const rootMenu = container.querySelector(
-        ".sidebar__wrapper"
+        ".sidebar-wrapper"
       ) as HTMLElement;
       const btnOpenMenu = screen.getByRole("button", { name: /open menu/i });
       const btnCloseMenu = screen.getByRole("button", { name: /close menu/i });
 
       expect(rootMenu).toBeInTheDocument();
-      expect(
-        rootMenu?.classList.contains("sidebar__wrapper--show")
-      ).toBeFalsy();
+      expect(rootMenu?.classList.contains("sidebar-wrapper--show")).toBeFalsy();
 
       await user.click(btnOpenMenu);
 
       expect(
-        rootMenu?.classList.contains("sidebar__wrapper--show")
+        rootMenu?.classList.contains("sidebar-wrapper--show")
       ).toBeTruthy();
 
       await user.click(btnCloseMenu);
 
-      expect(
-        rootMenu?.classList.contains("sidebar__wrapper--show")
-      ).toBeFalsy();
+      expect(rootMenu?.classList.contains("sidebar-wrapper--show")).toBeFalsy();
     });
 
     test("When you hover on a specific link it should open the respective menu, if you exit it should close.", async () => {

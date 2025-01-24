@@ -56,7 +56,7 @@ describe("Sidebar.tsx", () => {
       const { container } = renderComponent({ mobileMenu: false });
 
       // eslint-disable-next-line
-      const root = container.querySelector(".sidebar__wrapper");
+      const root = container.querySelector(".sidebar-wrapper");
       const btnCloseMenu = screen.getByRole("button", { name: /close menu/i });
       const list = screen.getByRole("list");
       const listItems = screen.getAllByRole("listitem");
@@ -77,7 +77,7 @@ describe("Sidebar.tsx", () => {
       }
 
       expect(root).toBeInTheDocument();
-      expect(root?.classList.contains("sidebar__wrapper--show")).toBeFalsy();
+      expect(root?.classList.contains("sidebar-wrapper--show")).toBeFalsy();
       expect(btnCloseMenu).toBeInTheDocument();
       expect(list).toBeInTheDocument();
       expect(listItems).toHaveLength(mockSubLinks.length);
@@ -87,10 +87,10 @@ describe("Sidebar.tsx", () => {
       const { container } = renderComponent({ mobileMenu: true });
 
       // eslint-disable-next-line
-      const root = container.querySelector(".sidebar__wrapper");
+      const root = container.querySelector(".sidebar-wrapper");
 
       expect(root).toBeInTheDocument();
-      expect(root?.classList.contains("sidebar__wrapper--show")).toBeTruthy();
+      expect(root?.classList.contains("sidebar-wrapper--show")).toBeTruthy();
     });
 
     test("It must execute the function 'handleMobileMenuClose' if you click on 'close menu'.", async () => {

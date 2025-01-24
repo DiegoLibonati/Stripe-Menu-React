@@ -13,7 +13,7 @@ const Sidebar = () => {
   return (
     <div
       className={
-        mobileMenu ? "sidebar__wrapper sidebar__wrapper--show" : "sidebar__wrapper"
+        mobileMenu ? "sidebar-wrapper sidebar-wrapper--show" : "sidebar-wrapper"
       }
     >
       <aside className="sidebar">
@@ -21,8 +21,9 @@ const Sidebar = () => {
           onClick={handleMobileMenuClose}
           type="button"
           aria-label="close menu"
+          className="sidebar__close"
         >
-          <FaTimes id="close"></FaTimes>
+          <FaTimes id="close" className="sidebar__close-icon"></FaTimes>
         </button>
 
         <ul className="sidebar__list">
@@ -30,29 +31,34 @@ const Sidebar = () => {
             const { page, links } = item;
 
             return (
-              <li key={index}>
-                <h4>{page}</h4>
+              <li key={index} className="sidebar__list-item">
+                <h4 className="sidebar__list-item-page">{page}</h4>
 
-                <div className="sidebar__link">
+                <div className="sidebar__list-item-links">
                   {links.map((link, index) => {
                     const { label, url } = link;
 
                     return (
-                      <a key={index} href={url} aria-label={`link ${label}`}>
+                      <a
+                        key={index}
+                        href={url}
+                        aria-label={`link ${label}`}
+                        className="sidebar__list-item-links-link"
+                      >
                         {page === "Products" ? (
                           <FaCreditCard
                             style={{ marginRight: "1rem" }}
-                            className="icon"
+                            className="sidebar__list-item-links-link-icon"
                           />
                         ) : page === "Developers" ? (
                           <FaBook
                             style={{ marginRight: "1rem" }}
-                            className="icon"
+                            className="sidebar__list-item-links-link-icon"
                           />
                         ) : (
                           <FaBriefcase
                             style={{ marginRight: "1rem" }}
-                            className="icon"
+                            className="sidebar__list-item-links-link-icon"
                           />
                         )}
                         {label}

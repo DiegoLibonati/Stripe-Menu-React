@@ -24,36 +24,33 @@ const Navbar = (): JSX.Element => {
 
   const handleDesktopClose: React.MouseEventHandler<HTMLElement> = (e) => {
     const target = e.target as HTMLElement;
-    if (!target.classList.contains("header__nav__list__btn")) {
+    if (!target.classList.contains("header__nav-list-item-btn")) {
       handleDesktopMenuClose();
     }
   };
 
   return (
-    <header
-      className="header"
-      onMouseOver={(e) => handleDesktopClose(e)}
-    >
+    <header className="header" onMouseOver={(e) => handleDesktopClose(e)}>
       <div className="header__logo">
         <img src={logo} alt="logo"></img>
         <button
-          className="header__logo__btn"
+          className="header__logo-btn"
           type="button"
           aria-label="open menu"
           onClick={handleMobileMenuOpen}
         >
-          <FaBars id="bars"></FaBars>
+          <FaBars id="bars" className="header__logo-btn-bars"></FaBars>
         </button>
       </div>
 
       <nav className="header__nav">
-        <ul className="header__nav__list">
+        <ul className="header__nav-list">
           {subLinks.map((subLink) => {
             return (
-              <li key={subLink.page}>
+              <li key={subLink.page} className="header__nav-list-item">
                 <button
                   type="button"
-                  className="header__nav__list__btn"
+                  className="header__nav-list-item-btn"
                   aria-label={`button ${subLink.page}`}
                   onMouseOver={(e) => openMenu(e)}
                 >
@@ -65,7 +62,7 @@ const Navbar = (): JSX.Element => {
         </ul>
       </nav>
 
-      <button type="button" className="header__sign__in" aria-label="sign in">
+      <button type="button" className="header__sign-in" aria-label="sign in">
         Sign in
       </button>
     </header>
