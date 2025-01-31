@@ -63,7 +63,7 @@ describe("App.tsx", () => {
       // eslint-disable-next-line
       const rootSubMenu = container.querySelector(".submenu") as HTMLElement;
       // eslint-disable-next-line
-      const headerOutHover = container.querySelector(".header") as HTMLElement;
+      const headerOutHover = container.querySelector(".header-wrapper") as HTMLElement;
       const btnOnHoverLink = screen.getByRole("button", {
         name: `button ${SUBLINK.page}`,
       });

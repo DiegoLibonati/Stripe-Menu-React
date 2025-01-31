@@ -51,12 +51,12 @@
   margin-bottom: 2rem;
 }
 
-.sidebar__list-item-page {
+.sidebar__subtitle {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
 
-.sidebar__list-item-links {
+.sidebar__sublinks {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,7 +65,7 @@
   height: auto;
 }
 
-.sidebar__list-item-links-link {
+.sidebar__sublinks-link {
   text-decoration: none;
   font-size: 1.5rem;
   color: var(--black-color);
@@ -73,7 +73,7 @@
   font-weight: 700;
 }
 
-.sidebar__list-item-links-link-icon {
+.sidebar__sublinks-link-icon {
   font-size: 1.5rem;
 }
 

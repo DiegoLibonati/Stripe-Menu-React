@@ -20,19 +20,19 @@
   width: 85%;
 }
 
-.hero__information-title {
+.hero__title {
   font-size: 3rem;
   font-weight: 900;
   margin-bottom: 2rem;
 }
 
-.hero__information-description {
+.hero__description {
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 2rem;
 }
 
-.hero__information-start {
+.hero__btn-start {
   padding: 0.5rem;
   font-size: 2rem;
   color: var(--white-color);
@@ -52,29 +52,29 @@
     padding: 0;
   }
 
-  .hero__information-title {
+  .hero__title {
     font-size: 7rem;
     width: 50rem;
   }
 
-  .hero__information-description {
+  .hero__description {
     font-size: 2.5rem;
     width: 50rem;
   }
 
-  .hero__information-start {
+  .hero__btn-start {
     font-size: 2rem;
   }
 }
 
 @media only screen and (min-width: 1600px) {
-  .hero__information-title {
+  .hero__title {
     font-size: 9rem;
     width: 70rem;
     line-height: 10rem;
   }
 
-  .hero__information-description {
+  .hero__description {
     font-size: 2.5rem;
     width: 65rem;
   }

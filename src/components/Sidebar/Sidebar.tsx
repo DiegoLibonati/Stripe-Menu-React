@@ -32,9 +32,9 @@ const Sidebar = () => {
 
             return (
               <li key={index} className="sidebar__list-item">
-                <h4 className="sidebar__list-item-page">{page}</h4>
+                <h4 className="sidebar__subtitle">{page}</h4>
 
-                <div className="sidebar__list-item-links">
+                <div className="sidebar__sublinks">
                   {links.map((link, index) => {
                     const { label, url } = link;
 
@@ -43,22 +43,22 @@ const Sidebar = () => {
                         key={index}
                         href={url}
                         aria-label={`link ${label}`}
-                        className="sidebar__list-item-links-link"
+                        className="sidebar__sublinks-link"
                       >
                         {page === "Products" ? (
                           <FaCreditCard
                             style={{ marginRight: "1rem" }}
-                            className="sidebar__list-item-links-link-icon"
+                            className="sidebar__sublinks-link-icon"
                           />
                         ) : page === "Developers" ? (
                           <FaBook
                             style={{ marginRight: "1rem" }}
-                            className="sidebar__list-item-links-link-icon"
+                            className="sidebar__sublinks-link-icon"
                           />
                         ) : (
                           <FaBriefcase
                             style={{ marginRight: "1rem" }}
-                            className="sidebar__list-item-links-link-icon"
+                            className="sidebar__sublinks-link-icon"
                           />
                         )}
                         {label}

@@ -77,7 +77,7 @@ describe("Navbar.tsx", () => {
       const { container, mockAppProvider } = renderComponent();
 
       // eslint-disable-next-line
-      const header = container.querySelector(".header") as HTMLElement;
+      const header = container.querySelector(".header-wrapper") as HTMLElement;
 
       expect(header).toBeInTheDocument();
 

@@ -28,7 +28,7 @@
     transition: visibility 1s, opacity 1s;
   }
 
-  .submenu__page {
+  .submenu__title {
     align-self: flex-start;
     font-size: 3rem;
     margin-bottom: 1rem;
@@ -47,13 +47,13 @@
     padding: 1rem;
   }
 
-  .submenu__list-item-link {
+  .submenu__link {
     font-size: 2.5rem;
     text-decoration: none;
     color: var(--black-color);
   }
 
-  .submenu__list-item-link-icon {
+  .submenu__link-icon {
     margin-right: 0.5rem;
     font-size: 1.5rem;
     color: var(--black-color);
