@@ -5,7 +5,7 @@ import App from "./App";
 
 import { AppProvider } from "./contexts/context";
 
-import { mockSubLinks } from "./tests/jest.constants";
+import { mockSubLinks } from "../tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;

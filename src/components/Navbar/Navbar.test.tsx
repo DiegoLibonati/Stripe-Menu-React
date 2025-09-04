@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 
 import { AppContext } from "../../contexts/context";
 
-import { mockSubLinks } from "../../tests/jest.constants";
+import { mockSubLinks } from "../../../tests/jest.constants";
 
 type RenderComponent = {
   mockAppProvider: AppContextT;
