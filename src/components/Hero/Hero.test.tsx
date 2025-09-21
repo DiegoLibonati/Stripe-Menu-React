@@ -1,11 +1,11 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { AppContext as AppContextT } from "../../entities/entities";
+import { AppContext as AppContextT } from "@src/entities/entities";
 
-import Hero from "./Hero";
+import Hero from "@src/components/Hero/Hero";
 
-import { AppContext } from "../../contexts/context";
+import { AppContext } from "@src/contexts/context";
 
 type RenderComponent = {
   mockAppProvider: AppContextT;

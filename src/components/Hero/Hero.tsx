@@ -1,8 +1,8 @@
-import { useGlobalContext } from "../../contexts/context";
+import { useGlobalContext } from "@src/contexts/context";
 
-import phone from "../../assets/phone.svg";
+import phone from "@src/assets/phone.svg";
 
-import "./Hero.css";
+import "@src/components/Hero/Hero.css";
 
 const Hero = (): JSX.Element => {
   const { handleDesktopMenuClose } = useGlobalContext()!;

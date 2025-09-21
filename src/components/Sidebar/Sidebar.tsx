@@ -1,11 +1,10 @@
-import { useGlobalContext } from "../../contexts/context";
+import { FaTimes, FaCreditCard, FaBook, FaBriefcase } from "react-icons/fa";
 
-import { subLinks } from "../../constants/data";
+import { useGlobalContext } from "@src/contexts/context";
 
-import { FaTimes } from "react-icons/fa";
-import { FaCreditCard, FaBook, FaBriefcase } from "react-icons/fa";
+import { subLinks } from "@src/constants/data";
 
-import "./Sidebar.css";
+import "@src/components/Sidebar/Sidebar.css";
 
 const Sidebar = () => {
   const { mobileMenu, handleMobileMenuClose } = useGlobalContext()!;

@@ -1,11 +1,12 @@
-import { useGlobalContext } from "../../contexts/context";
-
-import { subLinks } from "../../constants/data";
-
 import { FaBars } from "react-icons/fa";
-import logo from "../../assets/logo.svg";
 
-import "./Navbar.css";
+import { useGlobalContext } from "@src/contexts/context";
+
+import { subLinks } from "@src/constants/data";
+
+import logo from "@src/assets/logo.svg";
+
+import "@src/components/Navbar/Navbar.css";
 
 const Navbar = (): JSX.Element => {
   const {
@@ -42,7 +43,10 @@ const Navbar = (): JSX.Element => {
           aria-label="open menu"
           onClick={handleMobileMenuOpen}
         >
-          <FaBars id="bars" className="header__mobile-btn-open-menu-icon"></FaBars>
+          <FaBars
+            id="bars"
+            className="header__mobile-btn-open-menu-icon"
+          ></FaBars>
         </button>
       </div>
 

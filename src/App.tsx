@@ -1,11 +1,11 @@
 import { Fragment } from "react/jsx-runtime";
 
-import Hero from "./components/Hero/Hero";
-import Navbar from "./components/Navbar/Navbar";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Submenu from "./components/Submenu/Submenu";
+import Hero from "@src/components/Hero/Hero";
+import Navbar from "@src/components/Navbar/Navbar";
+import Sidebar from "@src/components/Sidebar/Sidebar";
+import Submenu from "@src/components/Submenu/Submenu";
 
-import "./App.css";
+import "@src/App.css";
 
 function App(): JSX.Element {
   return (

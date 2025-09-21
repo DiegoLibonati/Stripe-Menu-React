@@ -1,11 +1,11 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import App from "./App";
+import App from "@src/App";
 
-import { AppProvider } from "./contexts/context";
+import { AppProvider } from "@src/contexts/context";
 
-import { mockSubLinks } from "../tests/jest.constants";
+import { mockSubLinks } from "@tests/jest.constants";
 
 type RenderComponent = {
   container: HTMLElement;

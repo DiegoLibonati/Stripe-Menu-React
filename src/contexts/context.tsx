@@ -4,9 +4,9 @@ import {
   AppContext as AppContextT,
   AppProviderProps,
   SubLink,
-} from "../entities/entities";
+} from "@src/entities/entities";
 
-import { subLinks } from "../constants/data";
+import { subLinks } from "@src/constants/data";
 
 export const AppContext = React.createContext<AppContextT | null>(null);
 

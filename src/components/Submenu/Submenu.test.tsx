@@ -1,12 +1,12 @@
 import { screen, render } from "@testing-library/react";
 
-import { AppContext as AppContextT, SubLink } from "../../entities/entities";
+import { AppContext as AppContextT, SubLink } from "@src/entities/entities";
 
-import Submenu from "./Submenu";
+import Submenu from "@src/components/Submenu/Submenu";
 
-import { AppContext } from "../../contexts/context";
+import { AppContext } from "@src/contexts/context";
 
-import { mockSubLinks } from "../../../tests/jest.constants";
+import { mockSubLinks } from "@tests/jest.constants";
 
 type RenderComponent = {
   mockAppProvider: AppContextT;

@@ -1,4 +1,4 @@
-import { SubLink } from "../entities/entities";
+import { SubLink } from "@src/entities/entities";
 
 export const subLinks: SubLink[] = [
   {

@@ -1,13 +1,13 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { AppContext as AppContextT } from "../../entities/entities";
+import { AppContext as AppContextT } from "@src/entities/entities";
 
-import Navbar from "./Navbar";
+import Navbar from "@src/components/Navbar/Navbar";
 
-import { AppContext } from "../../contexts/context";
+import { AppContext } from "@src/contexts/context";
 
-import { mockSubLinks } from "../../../tests/jest.constants";
+import { mockSubLinks } from "@tests/jest.constants";
 
 type RenderComponent = {
   mockAppProvider: AppContextT;

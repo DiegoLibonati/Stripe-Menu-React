@@ -1,10 +1,9 @@
 import { useRef, useEffect } from "react";
-
-import { useGlobalContext } from "../../contexts/context";
-
 import { FaCreditCard, FaBook, FaBriefcase } from "react-icons/fa";
 
-import "./Submenu.css";
+import { useGlobalContext } from "@src/contexts/context";
+
+import "@src/components/Submenu/Submenu.css";
 
 const Submenu = (): JSX.Element => {
   const subMenuHtml = useRef<HTMLElement | null>(null);
