@@ -2,7 +2,7 @@ import { FaBars } from "react-icons/fa";
 
 import { useStripeContext } from "@src/hooks/useStripeContext";
 
-import subLinks from "@src/constants/sublinks";
+import subLinks from "@src/constants/subLinks";
 
 import assets from "@src/assets/export";
 
