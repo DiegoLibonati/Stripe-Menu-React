@@ -1,50 +1,62 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { AppContext as AppContextT } from "@src/entities/entities";
-
 import Navbar from "@src/components/Navbar/Navbar";
 
-import { AppContext } from "@src/contexts/context";
+import { StripeProvider } from "@src/contexts/StripeContext/StripeContext";
+
+import { useStripeContext } from "@src/hooks/useStripeContext";
 
 import { mockSubLinks } from "@tests/jest.constants";
 
 type RenderComponent = {
-  mockAppProvider: AppContextT;
   container: HTMLElement;
 };
 
 const renderComponent = (): RenderComponent => {
-  const mockAppProvider: AppContextT = {
-    mobileMenu: false,
-    subLink: { page: "", links: [] },
-    desktopMenu: false,
-    location: 0,
-    handleMobileMenuClose: jest.fn(),
-    handleMobileMenuOpen: jest.fn(),
-    handleDesktopMenuClose: jest.fn(),
-    handleDesktopMenuOpen: jest.fn(),
-  };
-
   const { container } = render(
-    <AppContext.Provider value={mockAppProvider}>
+    <StripeProvider>
       <Navbar />
-    </AppContext.Provider>
+    </StripeProvider>
   );
 
   return {
-    mockAppProvider: mockAppProvider,
     container: container,
   };
 };
 
-jest.mock("../../constants/data.ts", () => ({
-  get subLinks() {
-    return mockSubLinks;
-  },
+jest.mock("@src/constants/subLinks", () => {
+  const { mockSubLinks } = jest.requireActual("@tests/jest.constants");
+  return { __esModule: true, default: mockSubLinks };
+});
+
+jest.mock("@src/hooks/useStripeContext", () => ({
+  useStripeContext: jest.fn(),
 }));
 
 describe("Navbar.tsx", () => {
+  const handleMobileMenuClose = jest.fn();
+  const handleMobileMenuOpen = jest.fn();
+  const handleDesktopMenuClose = jest.fn();
+  const handleDesktopMenuOpen = jest.fn();
+
+  beforeEach(() => {
+    (useStripeContext as jest.Mock).mockReturnValue({
+      mobileMenu: false,
+      subLink: { page: "", links: [] },
+      desktopMenu: false,
+      location: 0,
+      handleMobileMenuClose: handleMobileMenuClose,
+      handleMobileMenuOpen: handleMobileMenuOpen,
+      handleDesktopMenuClose: handleDesktopMenuClose,
+      handleDesktopMenuOpen: handleDesktopMenuOpen,
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe("General Tests.", () => {
     test("It should render the logo, the 'Open Menu' button, the nav, the list of items and the 'Sign in' button.", () => {
       renderComponent();
@@ -74,20 +86,19 @@ describe("Navbar.tsx", () => {
     });
 
     test("It must execute the function 'handleDesktopMenuClose' when hovering over the header.", async () => {
-      const { container, mockAppProvider } = renderComponent();
+      const { container } = renderComponent();
 
-      // eslint-disable-next-line
       const header = container.querySelector(".header-wrapper") as HTMLElement;
 
       expect(header).toBeInTheDocument();
 
       await user.hover(header!);
 
-      expect(mockAppProvider.handleDesktopMenuClose).toHaveBeenCalledTimes(1);
+      expect(handleDesktopMenuClose).toHaveBeenCalledTimes(1);
     });
 
     test("It must execute the function 'handleMobileMenuOpen' when you click on 'open menu'.", async () => {
-      const { mockAppProvider } = renderComponent();
+      renderComponent();
 
       const btnOpenMenu = screen.getByRole("button", { name: /open menu/i });
 
@@ -95,11 +106,11 @@ describe("Navbar.tsx", () => {
 
       await user.click(btnOpenMenu);
 
-      expect(mockAppProvider.handleMobileMenuOpen).toHaveBeenCalledTimes(1);
+      expect(handleMobileMenuOpen).toHaveBeenCalledTimes(1);
     });
 
     test("It must execute the function 'handleDesktopMenuOpen' when hovering on a link.", async () => {
-      const { mockAppProvider } = renderComponent();
+      renderComponent();
 
       for (let subLink of mockSubLinks) {
         const btnSubLink = screen.getByRole("button", {
@@ -109,11 +120,8 @@ describe("Navbar.tsx", () => {
 
         await user.click(btnSubLink);
 
-        expect(mockAppProvider.handleDesktopMenuOpen).toHaveBeenCalledTimes(1);
-        expect(mockAppProvider.handleDesktopMenuOpen).toHaveBeenCalledWith(
-          subLink.page,
-          0
-        );
+        expect(handleDesktopMenuOpen).toHaveBeenCalledTimes(1);
+        expect(handleDesktopMenuOpen).toHaveBeenCalledWith(subLink.page, 0);
         jest.resetAllMocks();
       }
     });

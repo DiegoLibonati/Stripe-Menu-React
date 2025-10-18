@@ -1,11 +1,11 @@
-import { useGlobalContext } from "@src/contexts/context";
+import { useStripeContext } from "@src/hooks/useStripeContext";
 
-import phone from "@src/assets/phone.svg";
+import assets from "@src/assets/export";
 
 import "@src/components/Hero/Hero.css";
 
 const Hero = (): JSX.Element => {
-  const { handleDesktopMenuClose } = useGlobalContext()!;
+  const { handleDesktopMenuClose } = useStripeContext();
 
   return (
     <section className="hero" onMouseOver={handleDesktopMenuClose}>
@@ -29,7 +29,7 @@ const Hero = (): JSX.Element => {
       </article>
 
       <article className="hero__phone">
-        <img src={phone} alt="phone" className="hero__img"></img>
+        <img src={assets.svgs.PhoneSvg} alt="phone" className="hero__img"></img>
       </article>
     </section>
   );

@@ -1,10 +1,10 @@
 import { FaBars } from "react-icons/fa";
 
-import { useGlobalContext } from "@src/contexts/context";
+import { useStripeContext } from "@src/hooks/useStripeContext";
 
-import { subLinks } from "@src/constants/data";
+import subLinks from "@src/constants/sublinks";
 
-import logo from "@src/assets/logo.svg";
+import assets from "@src/assets/export";
 
 import "@src/components/Navbar/Navbar.css";
 
@@ -13,7 +13,7 @@ const Navbar = (): JSX.Element => {
     handleMobileMenuOpen,
     handleDesktopMenuOpen,
     handleDesktopMenuClose,
-  } = useGlobalContext()!;
+  } = useStripeContext()!;
 
   const openMenu: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     const target = e.target as HTMLButtonElement;
@@ -36,7 +36,11 @@ const Navbar = (): JSX.Element => {
       onMouseOver={(e) => handleDesktopClose(e)}
     >
       <div className="header__mobile">
-        <img src={logo} alt="logo" className="header__logo"></img>
+        <img
+          src={assets.svgs.LogoSvg}
+          alt="logo"
+          className="header__logo"
+        ></img>
         <button
           className="header__mobile-btn-open-menu"
           type="button"

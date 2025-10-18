@@ -1,16 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
-import {
-  AppContext as AppContextT,
-  AppProviderProps,
-  SubLink,
-} from "@src/entities/entities";
+import { SubLink } from "@src/entities/app";
+import { StripeContext as StripeContextT } from "@src/entities/contexts";
+import { StripeProviderProps } from "@src/entities/props";
 
-import { subLinks } from "@src/constants/data";
+import subLinks from "@src/constants/subLinks";
 
-export const AppContext = React.createContext<AppContextT | null>(null);
+export const StripeContext = React.createContext<StripeContextT | null>(null);
 
-export const AppProvider = ({ children }: AppProviderProps) => {
+export const StripeProvider = ({ children }: StripeProviderProps) => {
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
   const [desktopMenu, setDesktopMenu] = useState<boolean>(false);
   const [subLink, setSubLink] = useState<SubLink>({ page: "", links: [] });
@@ -36,7 +34,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   };
 
   return (
-    <AppContext.Provider
+    <StripeContext.Provider
       value={{
         mobileMenu,
         subLink,
@@ -49,10 +47,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
       }}
     >
       {children}
-    </AppContext.Provider>
+    </StripeContext.Provider>
   );
-};
-
-export const useGlobalContext = () => {
-  return useContext(AppContext);
 };

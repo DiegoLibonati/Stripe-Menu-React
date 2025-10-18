@@ -1,6 +1,6 @@
-import { SubLink } from "@src/entities/entities";
+import { SubLink } from "@src/entities/app";
 
-export const subLinks: SubLink[] = [
+const subLinks: SubLink[] = [
   {
     page: "Products",
     links: [
@@ -47,3 +47,5 @@ export const subLinks: SubLink[] = [
     ],
   },
 ];
+
+export default subLinks;

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { FaCreditCard, FaBook, FaBriefcase } from "react-icons/fa";
 
-import { useGlobalContext } from "@src/contexts/context";
+import { useStripeContext } from "@src/hooks/useStripeContext";
 
 import "@src/components/Submenu/Submenu.css";
 
@@ -12,7 +12,7 @@ const Submenu = (): JSX.Element => {
     subLink: { page, links },
     desktopMenu,
     location,
-  } = useGlobalContext()!;
+  } = useStripeContext()!;
 
   useEffect(() => {
     subMenuHtml.current!.style.left = `${location}px`;

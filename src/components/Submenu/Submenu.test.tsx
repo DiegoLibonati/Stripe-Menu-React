@@ -1,72 +1,62 @@
 import { screen, render } from "@testing-library/react";
 
-import { AppContext as AppContextT, SubLink } from "@src/entities/entities";
-
 import Submenu from "@src/components/Submenu/Submenu";
 
-import { AppContext } from "@src/contexts/context";
+import { StripeProvider } from "@src/contexts/StripeContext/StripeContext";
+
+import { useStripeContext } from "@src/hooks/useStripeContext";
 
 import { mockSubLinks } from "@tests/jest.constants";
 
 type RenderComponent = {
-  mockAppProvider: AppContextT;
   container: HTMLElement;
 };
 
-interface RenderComponentProps {
-  desktopMenu: boolean;
-  location: number;
-  subLink: SubLink;
-}
-
-const renderComponent = ({
-  desktopMenu,
-  location,
-  subLink,
-}: RenderComponentProps): RenderComponent => {
-  const mockAppProvider: AppContextT = {
-    mobileMenu: false,
-    subLink: subLink,
-    desktopMenu: desktopMenu,
-    location: location,
-    handleMobileMenuClose: jest.fn(),
-    handleMobileMenuOpen: jest.fn(),
-    handleDesktopMenuClose: jest.fn(),
-    handleDesktopMenuOpen: jest.fn(),
-  };
-
+const renderComponent = (): RenderComponent => {
   const { container } = render(
-    <AppContext.Provider value={mockAppProvider}>
+    <StripeProvider>
       <Submenu />
-    </AppContext.Provider>
+    </StripeProvider>
   );
 
   return {
-    mockAppProvider: mockAppProvider,
     container: container,
   };
 };
 
-jest.mock("../../constants/data.ts", () => ({
-  get subLinks() {
-    return mockSubLinks;
-  },
+jest.mock("@src/constants/subLinks", () => {
+  const { mockSubLinks } = jest.requireActual("@tests/jest.constants");
+  return { __esModule: true, default: mockSubLinks };
+});
+
+jest.mock("@src/hooks/useStripeContext", () => ({
+  useStripeContext: jest.fn(),
 }));
 
 describe("Submenu.tsx", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe("General Tests.", () => {
     const SUBLINK = mockSubLinks[0];
 
     test("It should render the root of the submenu, the title, the list and the total elements of the rendered list of the 'subLink'.", () => {
       const location = 2;
 
-      const { container } = renderComponent({
+      (useStripeContext as jest.Mock).mockReturnValue({
+        mobileMenu: false,
+        subLink: SUBLINK,
         desktopMenu: false,
         location: location,
-        subLink: SUBLINK,
+        handleMobileMenuClose: jest.fn(),
+        handleMobileMenuOpen: jest.fn(),
+        handleDesktopMenuClose: jest.fn(),
+        handleDesktopMenuOpen: jest.fn(),
       });
 
-      // eslint-disable-next-line
+      const { container } = renderComponent();
+
       const root = container.querySelector(".submenu");
       const heading = screen.getByRole("heading", { name: SUBLINK.page });
       const list = screen.getByRole("list");
@@ -92,13 +82,19 @@ describe("Submenu.tsx", () => {
     test("It must render the root of the submenu with the class 'submenu--show' when 'desktopMenu' is 'true'.", () => {
       const location = 2;
 
-      const { container } = renderComponent({
+      (useStripeContext as jest.Mock).mockReturnValue({
+        mobileMenu: false,
+        subLink: SUBLINK,
         desktopMenu: true,
         location: location,
-        subLink: SUBLINK,
+        handleMobileMenuClose: jest.fn(),
+        handleMobileMenuOpen: jest.fn(),
+        handleDesktopMenuClose: jest.fn(),
+        handleDesktopMenuOpen: jest.fn(),
       });
 
-      // eslint-disable-next-line
+      const { container } = renderComponent();
+
       const root = container.querySelector(".submenu");
 
       expect(root).toBeInTheDocument();

@@ -1,16 +1,6 @@
-// Types
+import { SubLink } from "@src/entities/app";
 
-export type SubLink = {
-  page: string;
-  links: Link[];
-};
-
-export type Link = {
-  label: string;
-  url: string;
-};
-
-export type AppContext = {
+export type StripeContext = {
   mobileMenu: boolean;
   desktopMenu: boolean;
   location: number;
@@ -20,9 +10,3 @@ export type AppContext = {
   handleDesktopMenuClose: () => void;
   handleDesktopMenuOpen: (text: string, centerBtn: number) => void;
 };
-
-// Interfaces
-
-export interface AppProviderProps {
-  children: React.ReactNode;
-}

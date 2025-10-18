@@ -1,61 +1,55 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { AppContext as AppContextT } from "@src/entities/entities";
-
 import Sidebar from "@src/components/Sidebar/Sidebar";
 
-import { AppContext } from "@src/contexts/context";
+import { StripeProvider } from "@src/contexts/StripeContext/StripeContext";
+
+import { useStripeContext } from "@src/hooks/useStripeContext";
 
 import { mockSubLinks } from "@tests/jest.constants";
 
 type RenderComponent = {
-  mockAppProvider: AppContextT;
   container: HTMLElement;
 };
 
-interface RenderComponentProps {
-  mobileMenu: boolean;
-}
-
-const renderComponent = ({
-  mobileMenu,
-}: RenderComponentProps): RenderComponent => {
-  const mockAppProvider: AppContextT = {
-    mobileMenu: mobileMenu,
-    subLink: { page: "", links: [] },
-    desktopMenu: false,
-    location: 0,
-    handleMobileMenuClose: jest.fn(),
-    handleMobileMenuOpen: jest.fn(),
-    handleDesktopMenuClose: jest.fn(),
-    handleDesktopMenuOpen: jest.fn(),
-  };
-
+const renderComponent = (): RenderComponent => {
   const { container } = render(
-    <AppContext.Provider value={mockAppProvider}>
+    <StripeProvider>
       <Sidebar />
-    </AppContext.Provider>
+    </StripeProvider>
   );
 
   return {
-    mockAppProvider: mockAppProvider,
     container: container,
   };
 };
 
-jest.mock("../../constants/data.ts", () => ({
-  get subLinks() {
-    return mockSubLinks;
-  },
+jest.mock("@src/constants/subLinks", () => {
+  const { mockSubLinks } = jest.requireActual("@tests/jest.constants");
+  return { __esModule: true, default: mockSubLinks };
+});
+
+jest.mock("@src/hooks/useStripeContext", () => ({
+  useStripeContext: jest.fn(),
 }));
 
 describe("Sidebar.tsx", () => {
   describe("General Tests.", () => {
     test("It should render the close menu button, the list of items and all items with their respective title.", () => {
-      const { container } = renderComponent({ mobileMenu: false });
+      (useStripeContext as jest.Mock).mockReturnValue({
+        mobileMenu: false,
+        subLink: { page: "", links: [] },
+        desktopMenu: false,
+        location: 0,
+        handleMobileMenuClose: jest.fn(),
+        handleMobileMenuOpen: jest.fn(),
+        handleDesktopMenuClose: jest.fn(),
+        handleDesktopMenuOpen: jest.fn(),
+      });
 
-      // eslint-disable-next-line
+      const { container } = renderComponent();
+
       const root = container.querySelector(".sidebar-wrapper");
       const btnCloseMenu = screen.getByRole("button", { name: /close menu/i });
       const list = screen.getByRole("list");
@@ -84,9 +78,19 @@ describe("Sidebar.tsx", () => {
     });
 
     test("It must render the root with the class 'sidebar__wrapper--show' if 'mobileMenu' is 'true'.", () => {
-      const { container } = renderComponent({ mobileMenu: true });
+      (useStripeContext as jest.Mock).mockReturnValue({
+        mobileMenu: true,
+        subLink: { page: "", links: [] },
+        desktopMenu: false,
+        location: 0,
+        handleMobileMenuClose: jest.fn(),
+        handleMobileMenuOpen: jest.fn(),
+        handleDesktopMenuClose: jest.fn(),
+        handleDesktopMenuOpen: jest.fn(),
+      });
 
-      // eslint-disable-next-line
+      const { container } = renderComponent();
+
       const root = container.querySelector(".sidebar-wrapper");
 
       expect(root).toBeInTheDocument();
@@ -94,7 +98,20 @@ describe("Sidebar.tsx", () => {
     });
 
     test("It must execute the function 'handleMobileMenuClose' if you click on 'close menu'.", async () => {
-      const { mockAppProvider } = renderComponent({ mobileMenu: false });
+      const handleMobileMenuClose = jest.fn();
+
+      (useStripeContext as jest.Mock).mockReturnValue({
+        mobileMenu: false,
+        subLink: { page: "", links: [] },
+        desktopMenu: false,
+        location: 0,
+        handleMobileMenuClose: handleMobileMenuClose,
+        handleMobileMenuOpen: jest.fn(),
+        handleDesktopMenuClose: jest.fn(),
+        handleDesktopMenuOpen: jest.fn(),
+      });
+
+      renderComponent();
 
       const btnCloseMenu = screen.getByRole("button", { name: /close menu/i });
 
@@ -102,7 +119,7 @@ describe("Sidebar.tsx", () => {
 
       await user.click(btnCloseMenu);
 
-      expect(mockAppProvider.handleMobileMenuClose).toHaveBeenCalledTimes(1);
+      expect(handleMobileMenuClose).toHaveBeenCalledTimes(1);
     });
   });
 });
