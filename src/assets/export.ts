@@ -1,9 +1,9 @@
-import HeroSvg from "@src/assets/svgs/hero.svg";
-import LogoSvg from "@src/assets/svgs/logo.svg";
-import PhoneSvg from "@src/assets/svgs/phone.svg";
+import HeroSvg from "@src/assets/images/hero.svg";
+import LogoSvg from "@src/assets/images/logo.svg";
+import PhoneSvg from "@src/assets/images/phone.svg";
 
 const assets = {
-  svgs: {
+  images: {
     HeroSvg: HeroSvg,
     LogoSvg: LogoSvg,
     PhoneSvg: PhoneSvg,

@@ -37,7 +37,7 @@ const Navbar = (): JSX.Element => {
     >
       <div className="header__mobile">
         <img
-          src={assets.svgs.LogoSvg}
+          src={assets.images.LogoSvg}
           alt="logo"
           className="header__logo"
         ></img>

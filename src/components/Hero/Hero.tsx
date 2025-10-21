@@ -29,7 +29,7 @@ const Hero = (): JSX.Element => {
       </article>
 
       <article className="hero__phone">
-        <img src={assets.svgs.PhoneSvg} alt="phone" className="hero__img"></img>
+        <img src={assets.images.PhoneSvg} alt="phone" className="hero__img"></img>
       </article>
     </section>
   );
