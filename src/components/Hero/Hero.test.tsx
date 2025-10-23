@@ -74,7 +74,7 @@ describe("Hero.tsx", () => {
     test("It must execute the function 'handleDesktopMenuClose' when hovering over the root.", async () => {
       const { container } = renderComponent();
 
-      const sectionContainer = container.querySelector(".hero") as HTMLElement;
+      const sectionContainer = container.querySelector<HTMLElement>(".hero");
 
       expect(sectionContainer).toBeInTheDocument();
 

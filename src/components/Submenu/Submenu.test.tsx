@@ -57,7 +57,7 @@ describe("Submenu.tsx", () => {
 
       const { container } = renderComponent();
 
-      const root = container.querySelector(".submenu");
+      const root = container.querySelector<HTMLElement>(".submenu");
       const heading = screen.getByRole("heading", { name: SUBLINK.page });
       const list = screen.getByRole("list");
       const listItems = screen.getAllByRole("listitem");
@@ -95,7 +95,7 @@ describe("Submenu.tsx", () => {
 
       const { container } = renderComponent();
 
-      const root = container.querySelector(".submenu");
+      const root = container.querySelector<HTMLElement>(".submenu");
 
       expect(root).toBeInTheDocument();
       expect(root?.classList.contains("submenu--show")).toBeTruthy();

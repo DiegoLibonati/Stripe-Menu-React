@@ -35,9 +35,7 @@ describe("StripePage.tsx", () => {
     test("It must open the navbar in mobile when you click on the 'open menu' button and close it when you click on 'close menu'.", async () => {
       const { container } = renderComponent();
 
-      const rootMenu = container.querySelector(
-        ".sidebar-wrapper"
-      ) as HTMLElement;
+      const rootMenu = container.querySelector<HTMLElement>(".sidebar-wrapper");
       const btnOpenMenu = screen.getByRole("button", { name: /open menu/i });
       const btnCloseMenu = screen.getByRole("button", { name: /close menu/i });
 
@@ -58,10 +56,9 @@ describe("StripePage.tsx", () => {
     test("When you hover on a specific link it should open the respective menu, if you exit it should close.", async () => {
       const { container } = renderComponent();
 
-      const rootSubMenu = container.querySelector(".submenu") as HTMLElement;
-      const headerOutHover = container.querySelector(
-        ".header-wrapper"
-      ) as HTMLElement;
+      const rootSubMenu = container.querySelector<HTMLElement>(".submenu");
+      const headerOutHover =
+        container.querySelector<HTMLElement>(".header-wrapper");
       const btnOnHoverLink = screen.getByRole("button", {
         name: `button ${SUBLINK.page}`,
       });
@@ -75,7 +72,7 @@ describe("StripePage.tsx", () => {
 
       expect(rootSubMenu?.classList.contains("submenu--show")).toBeTruthy();
 
-      await user.hover(headerOutHover);
+      await user.hover(headerOutHover!);
 
       expect(rootSubMenu?.classList.contains("submenu--show")).toBeFalsy();
     });

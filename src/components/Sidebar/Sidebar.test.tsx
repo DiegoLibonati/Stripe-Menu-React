@@ -50,7 +50,7 @@ describe("Sidebar.tsx", () => {
 
       const { container } = renderComponent();
 
-      const root = container.querySelector(".sidebar-wrapper");
+      const root = container.querySelector<HTMLDivElement>(".sidebar-wrapper");
       const btnCloseMenu = screen.getByRole("button", { name: /close menu/i });
       const list = screen.getByRole("list");
       const listItems = screen.getAllByRole("listitem");
@@ -91,7 +91,7 @@ describe("Sidebar.tsx", () => {
 
       const { container } = renderComponent();
 
-      const root = container.querySelector(".sidebar-wrapper");
+      const root = container.querySelector<HTMLDivElement>(".sidebar-wrapper");
 
       expect(root).toBeInTheDocument();
       expect(root?.classList.contains("sidebar-wrapper--show")).toBeTruthy();

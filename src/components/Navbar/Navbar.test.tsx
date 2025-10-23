@@ -88,7 +88,7 @@ describe("Navbar.tsx", () => {
     test("It must execute the function 'handleDesktopMenuClose' when hovering over the header.", async () => {
       const { container } = renderComponent();
 
-      const header = container.querySelector(".header-wrapper") as HTMLElement;
+      const header = container.querySelector<HTMLElement>(".header-wrapper");
 
       expect(header).toBeInTheDocument();
 
