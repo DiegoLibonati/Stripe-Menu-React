@@ -12,14 +12,20 @@ const Sidebar = () => {
 
   return (
     <div className={mobileMenu ? "sidebar-wrapper sidebar-wrapper--show" : "sidebar-wrapper"}>
-      <aside className="sidebar">
+      <aside
+        id="sidebar-nav"
+        className="sidebar"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
+      >
         <button
           onClick={handleMobileMenuClose}
           type="button"
-          aria-label="close menu"
+          aria-label="Close navigation menu"
           className="sidebar__close"
         >
-          <FaTimes id="close" className="sidebar__close-icon"></FaTimes>
+          <FaTimes id="close" className="sidebar__close-icon" aria-hidden="true"></FaTimes>
         </button>
 
         <ul className="sidebar__list">
@@ -38,23 +44,26 @@ const Sidebar = () => {
                       <a
                         key={index}
                         href={url}
-                        aria-label={`link ${label}`}
+                        aria-label={label}
                         className="sidebar__sublinks-link"
                       >
                         {page === "Products" ? (
                           <FaCreditCard
-                            style={{ marginRight: "1rem" }}
+                            style={{ marginRight: "0.625rem" }}
                             className="sidebar__sublinks-link-icon"
+                            aria-hidden="true"
                           />
                         ) : page === "Developers" ? (
                           <FaBook
-                            style={{ marginRight: "1rem" }}
+                            style={{ marginRight: "0.625rem" }}
                             className="sidebar__sublinks-link-icon"
+                            aria-hidden="true"
                           />
                         ) : (
                           <FaBriefcase
-                            style={{ marginRight: "1rem" }}
+                            style={{ marginRight: "0.625rem" }}
                             className="sidebar__sublinks-link-icon"
+                            aria-hidden="true"
                           />
                         )}
                         {label}

@@ -18,7 +18,7 @@ const Hero = () => {
           Millions of companies of all sizes—from startups to Fortune 500s—use Stripe’s software and
           APIs to accept payments, send payouts, and manage their businesses online
         </p>
-        <button type="button" aria-label="start now" className="hero__btn-start">
+        <button type="button" className="hero__btn-start">
           Start now
         </button>
       </article>

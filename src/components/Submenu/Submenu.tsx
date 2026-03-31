@@ -25,13 +25,25 @@ const Submenu = () => {
           const { label, url } = link;
           return (
             <li key={index} className="submenu__list-item">
-              <a href={url} aria-label={`link ${label}`} className="submenu__link">
+              <a href={url} aria-label={label} className="submenu__link">
                 {page === "Products" ? (
-                  <FaCreditCard style={{ marginRight: "1rem" }} className="submenu__link-icon" />
+                  <FaCreditCard
+                    style={{ marginRight: "0.625rem" }}
+                    className="submenu__link-icon"
+                    aria-hidden="true"
+                  />
                 ) : page === "Developers" ? (
-                  <FaBook style={{ marginRight: "1rem" }} className="submenu__link-icon" />
+                  <FaBook
+                    style={{ marginRight: "0.625rem" }}
+                    className="submenu__link-icon"
+                    aria-hidden="true"
+                  />
                 ) : (
-                  <FaBriefcase style={{ marginRight: "1rem" }} className="submenu__link-icon" />
+                  <FaBriefcase
+                    style={{ marginRight: "0.625rem" }}
+                    className="submenu__link-icon"
+                    aria-hidden="true"
+                  />
                 )}
                 {label}
               </a>

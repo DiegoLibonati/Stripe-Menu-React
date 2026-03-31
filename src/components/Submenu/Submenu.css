@@ -13,12 +13,12 @@
     visibility: hidden;
     opacity: 0;
     left: 50%;
-    top: 4.5rem;
+    top: 2.8125rem;
     width: auto;
     transform: translateX(-50%);
     height: auto;
-    padding: 1rem;
-    border-radius: 1rem;
+    padding: 0.625rem;
+    border-radius: 0.625rem;
     transition:
       visibility 1s,
       opacity 1s,
@@ -35,8 +35,8 @@
 
   .submenu__title {
     align-self: flex-start;
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 1.875rem;
+    margin-bottom: 0.625rem;
   }
 
   .submenu__list {
@@ -49,18 +49,18 @@
   }
 
   .submenu__list-item {
-    padding: 1rem;
+    padding: 0.625rem;
   }
 
   .submenu__link {
-    font-size: 2.5rem;
+    font-size: 1.5625rem;
     text-decoration: none;
     color: var(--color-black);
   }
 
   .submenu__link-icon {
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
+    margin-right: 0.3125rem;
+    font-size: 0.9375rem;
     color: var(--color-black);
   }
 }

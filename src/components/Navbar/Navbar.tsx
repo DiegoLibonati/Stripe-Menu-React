@@ -9,8 +9,9 @@ import assets from "@/assets/export";
 import "@/components/Navbar/Navbar.css";
 
 const Navbar = () => {
-  const { handleMobileMenuOpen, handleDesktopMenuOpen, handleDesktopMenuClose } =
+  const { stripeState, handleMobileMenuOpen, handleDesktopMenuOpen, handleDesktopMenuClose } =
     useStripeContext()!;
+  const { mobileMenu, desktopMenu, subLink: activeSubLink } = stripeState;
 
   const openMenu: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     const target = e.target as HTMLButtonElement;
@@ -34,7 +35,9 @@ const Navbar = () => {
         <button
           className="header__mobile-btn-open-menu"
           type="button"
-          aria-label="open menu"
+          aria-label="Open navigation menu"
+          aria-expanded={mobileMenu}
+          aria-controls="sidebar-nav"
           onClick={handleMobileMenuOpen}
         >
           <FaBars id="bars" className="header__mobile-btn-open-menu-icon"></FaBars>
@@ -49,7 +52,9 @@ const Navbar = () => {
                 <button
                   type="button"
                   className="header__sublink-page"
-                  aria-label={`button ${subLink.page}`}
+                  aria-label={`Open ${subLink.page} menu`}
+                  aria-haspopup="true"
+                  aria-expanded={desktopMenu && activeSubLink.page === subLink.page}
                   onMouseOver={(e) => openMenu(e)}
                 >
                   {subLink.page}
@@ -60,7 +65,7 @@ const Navbar = () => {
         </ul>
       </nav>
 
-      <button type="button" className="header__sign-in" aria-label="sign in">
+      <button type="button" className="header__sign-in">
         Sign in
       </button>
     </header>
