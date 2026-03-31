@@ -1,10 +1,10 @@
-import { useStripeContext } from "@src/hooks/useStripeContext";
+import { useStripeContext } from "@/hooks/useStripeContext";
 
-import assets from "@src/assets/export";
+import assets from "@/assets/export";
 
-import "@src/components/Hero/Hero.css";
+import "@/components/Hero/Hero.css";
 
-const Hero = (): JSX.Element => {
+const Hero = () => {
   const { handleDesktopMenuClose } = useStripeContext();
 
   return (
@@ -15,15 +15,10 @@ const Hero = (): JSX.Element => {
           for the internet
         </h1>
         <p className="hero__description">
-          Millions of companies of all sizes—from startups to Fortune 500s—use
-          Stripe’s software and APIs to accept payments, send payouts, and
-          manage their businesses online
+          Millions of companies of all sizes—from startups to Fortune 500s—use Stripe’s software and
+          APIs to accept payments, send payouts, and manage their businesses online
         </p>
-        <button
-          type="button"
-          aria-label="start now"
-          className="hero__btn-start"
-        >
+        <button type="button" aria-label="start now" className="hero__btn-start">
           Start now
         </button>
       </article>

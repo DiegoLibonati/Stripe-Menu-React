@@ -8,21 +8,25 @@
   visibility: hidden;
   opacity: 0;
   height: 100%;
-  background-color: rgba(var(--black-int-color), 0.438);
-  transition: opacity 1s, visibility 1s;
+  background-color: rgba(var(--color-black-rgb), 0.438);
+  transition:
+    opacity 1s,
+    visibility 1s;
 }
 
 .sidebar-wrapper--show {
   visibility: visible;
   opacity: 1;
-  transition: opacity 1s, visibility 1s;
+  transition:
+    opacity 1s,
+    visibility 1s;
 }
 
 .sidebar {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--white-color);
+  background-color: var(--color-white);
   width: 90%;
   height: 90%;
   position: relative;
@@ -68,7 +72,7 @@
 .sidebar__sublinks-link {
   text-decoration: none;
   font-size: 1.5rem;
-  color: var(--black-color);
+  color: var(--color-black);
   padding: 1rem;
   font-weight: 700;
 }

@@ -1,19 +1,16 @@
 import { FaBars } from "react-icons/fa";
 
-import { useStripeContext } from "@src/hooks/useStripeContext";
+import { useStripeContext } from "@/hooks/useStripeContext";
 
-import subLinks from "@src/constants/subLinks";
+import subLinks from "@/constants/subLinks";
 
-import assets from "@src/assets/export";
+import assets from "@/assets/export";
 
-import "@src/components/Navbar/Navbar.css";
+import "@/components/Navbar/Navbar.css";
 
-const Navbar = (): JSX.Element => {
-  const {
-    handleMobileMenuOpen,
-    handleDesktopMenuOpen,
-    handleDesktopMenuClose,
-  } = useStripeContext()!;
+const Navbar = () => {
+  const { handleMobileMenuOpen, handleDesktopMenuOpen, handleDesktopMenuClose } =
+    useStripeContext()!;
 
   const openMenu: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     const target = e.target as HTMLButtonElement;
@@ -31,26 +28,16 @@ const Navbar = (): JSX.Element => {
   };
 
   return (
-    <header
-      className="header-wrapper"
-      onMouseOver={(e) => handleDesktopClose(e)}
-    >
+    <header className="header-wrapper" onMouseOver={(e) => handleDesktopClose(e)}>
       <div className="header__mobile">
-        <img
-          src={assets.images.LogoSvg}
-          alt="logo"
-          className="header__logo"
-        ></img>
+        <img src={assets.images.LogoSvg} alt="logo" className="header__logo"></img>
         <button
           className="header__mobile-btn-open-menu"
           type="button"
           aria-label="open menu"
           onClick={handleMobileMenuOpen}
         >
-          <FaBars
-            id="bars"
-            className="header__mobile-btn-open-menu-icon"
-          ></FaBars>
+          <FaBars id="bars" className="header__mobile-btn-open-menu-icon"></FaBars>
         </button>
       </div>
 

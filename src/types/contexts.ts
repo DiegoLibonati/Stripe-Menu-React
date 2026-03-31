@@ -1,10 +1,7 @@
-import { SubLink } from "@src/entities/app";
+import { StripeState } from "@/types/states";
 
 export type StripeContext = {
-  mobileMenu: boolean;
-  desktopMenu: boolean;
-  location: number;
-  subLink: SubLink;
+  stripeState: StripeState;
   handleMobileMenuClose: () => void;
   handleMobileMenuOpen: () => void;
   handleDesktopMenuClose: () => void;

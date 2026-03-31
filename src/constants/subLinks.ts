@@ -1,4 +1,4 @@
-import { SubLink } from "@src/entities/app";
+import { SubLink } from "@/types/app";
 
 const subLinks: SubLink[] = [
   {

@@ -1,28 +1,23 @@
 import { useRef, useEffect } from "react";
 import { FaCreditCard, FaBook, FaBriefcase } from "react-icons/fa";
 
-import { useStripeContext } from "@src/hooks/useStripeContext";
+import { useStripeContext } from "@/hooks/useStripeContext";
 
-import "@src/components/Submenu/Submenu.css";
+import "@/components/Submenu/Submenu.css";
 
-const Submenu = (): JSX.Element => {
+const Submenu = () => {
   const subMenuHtml = useRef<HTMLElement | null>(null);
 
-  const {
-    subLink: { page, links },
-    desktopMenu,
-    location,
-  } = useStripeContext()!;
+  const { stripeState } = useStripeContext()!;
+  const { desktopMenu, subLink, location } = stripeState;
+  const { page, links } = subLink;
 
   useEffect(() => {
     subMenuHtml.current!.style.left = `${location}px`;
   }, [page, location]);
 
   return (
-    <aside
-      ref={subMenuHtml}
-      className={desktopMenu ? "submenu submenu--show" : "submenu"}
-    >
+    <aside ref={subMenuHtml} className={desktopMenu ? "submenu submenu--show" : "submenu"}>
       <h3 className="submenu__title">{page}</h3>
 
       <ul className="submenu__list">
@@ -30,26 +25,13 @@ const Submenu = (): JSX.Element => {
           const { label, url } = link;
           return (
             <li key={index} className="submenu__list-item">
-              <a
-                href={url}
-                aria-label={`link ${label}`}
-                className="submenu__link"
-              >
+              <a href={url} aria-label={`link ${label}`} className="submenu__link">
                 {page === "Products" ? (
-                  <FaCreditCard
-                    style={{ marginRight: "1rem" }}
-                    className="submenu__link-icon"
-                  />
+                  <FaCreditCard style={{ marginRight: "1rem" }} className="submenu__link-icon" />
                 ) : page === "Developers" ? (
-                  <FaBook
-                    style={{ marginRight: "1rem" }}
-                    className="submenu__link-icon"
-                  />
+                  <FaBook style={{ marginRight: "1rem" }} className="submenu__link-icon" />
                 ) : (
-                  <FaBriefcase
-                    style={{ marginRight: "1rem" }}
-                    className="submenu__link-icon"
-                  />
+                  <FaBriefcase style={{ marginRight: "1rem" }} className="submenu__link-icon" />
                 )}
                 {label}
               </a>

@@ -1,8 +1,8 @@
-import { StripePage } from "@src/pages/StripePage/StripePage";
+import StripePage from "@/pages/StripePage/StripePage";
 
-import { StripeProvider } from "@src/contexts/StripeContext/StripeContext";
+import { StripeProvider } from "@/contexts/StripeContext/StripeProvider";
 
-function App(): JSX.Element {
+function App() {
   return (
     <StripeProvider>
       <StripePage></StripePage>

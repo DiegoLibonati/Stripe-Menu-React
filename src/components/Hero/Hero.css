@@ -35,8 +35,8 @@
 .hero__btn-start {
   padding: 0.5rem;
   font-size: 2rem;
-  color: var(--white-color);
-  background-color: var(--black-color);
+  color: var(--color-white);
+  background-color: var(--color-black);
   border-radius: 1rem;
   border: none;
 }

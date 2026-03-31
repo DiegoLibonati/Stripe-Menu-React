@@ -1,13 +1,13 @@
 import { Fragment } from "react/jsx-runtime";
 
-import Hero from "@src/components/Hero/Hero";
-import Navbar from "@src/components/Navbar/Navbar";
-import Submenu from "@src/components/Submenu/Submenu";
-import Sidebar from "@src/components/Sidebar/Sidebar";
+import Hero from "@/components/Hero/Hero";
+import Navbar from "@/components/Navbar/Navbar";
+import Submenu from "@/components/Submenu/Submenu";
+import Sidebar from "@/components/Sidebar/Sidebar";
 
-import "@src/pages/StripePage/StripePage.css";
+import "@/pages/StripePage/StripePage.css";
 
-export const StripePage = () => {
+const StripePage = () => {
   return (
     <Fragment>
       <Navbar></Navbar>
@@ -17,3 +17,5 @@ export const StripePage = () => {
     </Fragment>
   );
 };
+
+export default StripePage;

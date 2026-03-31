@@ -1,4 +1,4 @@
-import { SubLink } from "@src/entities/entities";
+import { SubLink } from "@/types/app";
 
 export const mockSubLinks: SubLink[] = [
   {
