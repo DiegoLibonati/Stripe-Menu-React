@@ -33,6 +33,10 @@ const renderComponent = (page = "Products"): RenderComponent => {
 };
 
 describe("Submenu", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should not be visible initially", () => {
     const { container } = renderComponent();
     expect(container.querySelector<HTMLElement>("aside.submenu")).not.toHaveClass("submenu--show");

@@ -21,6 +21,10 @@ const renderComponent = (): RenderComponent => {
 };
 
 describe("Navbar", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render a header element", () => {
     renderComponent();
     expect(screen.getByRole("banner")).toBeInTheDocument();

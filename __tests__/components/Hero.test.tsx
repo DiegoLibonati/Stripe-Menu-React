@@ -18,6 +18,10 @@ const renderComponent = (): RenderComponent => {
 };
 
 describe("Hero", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the hero section element", () => {
     const { container } = renderComponent();
     expect(container.querySelector<HTMLElement>("section.hero")).toBeInTheDocument();

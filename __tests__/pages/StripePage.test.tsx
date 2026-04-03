@@ -18,6 +18,10 @@ const renderPage = (): RenderPage => {
 };
 
 describe("StripePage", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the navbar", () => {
     renderPage();
     expect(screen.getByRole("banner")).toBeInTheDocument();

@@ -33,6 +33,10 @@ const renderComponent = (): RenderComponent => {
 };
 
 describe("Sidebar", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should not be visible initially", () => {
     const { container } = renderComponent();
     expect(container.querySelector<HTMLElement>(".sidebar-wrapper")).not.toHaveClass(
