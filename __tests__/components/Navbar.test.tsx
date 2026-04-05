@@ -7,9 +7,9 @@ import { StripeProvider } from "@/contexts/StripeContext/StripeProvider";
 
 import { mockSubLinks } from "@tests/__mocks__/subLinks.mock";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
-};
+}
 
 const renderComponent = (): RenderComponent => {
   const { container } = render(

@@ -1,13 +1,15 @@
 import { FaTimes, FaCreditCard, FaBook, FaBriefcase } from "react-icons/fa";
 
+import type { JSX } from "react";
+
 import { useStripeContext } from "@/hooks/useStripeContext";
 
 import subLinks from "@/constants/subLinks";
 
 import "@/components/Sidebar/Sidebar.css";
 
-const Sidebar = () => {
-  const { stripeState, handleMobileMenuClose } = useStripeContext()!;
+const Sidebar = (): JSX.Element => {
+  const { stripeState, handleMobileMenuClose } = useStripeContext();
   const { mobileMenu } = stripeState;
 
   return (

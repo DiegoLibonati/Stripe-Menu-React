@@ -1,5 +1,7 @@
 import { FaBars } from "react-icons/fa";
 
+import type { JSX } from "react";
+
 import { useStripeContext } from "@/hooks/useStripeContext";
 
 import subLinks from "@/constants/subLinks";
@@ -8,9 +10,9 @@ import assets from "@/assets/export";
 
 import "@/components/Navbar/Navbar.css";
 
-const Navbar = () => {
+const Navbar = (): JSX.Element => {
   const { stripeState, handleMobileMenuOpen, handleDesktopMenuOpen, handleDesktopMenuClose } =
-    useStripeContext()!;
+    useStripeContext();
   const { mobileMenu, desktopMenu, subLink: activeSubLink } = stripeState;
 
   const openMenu: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -18,7 +20,7 @@ const Navbar = () => {
     const page = target.textContent;
     const location = target.getBoundingClientRect();
     const centerBtn = (location.left + location.right) / 2;
-    handleDesktopMenuOpen(page!, centerBtn);
+    handleDesktopMenuOpen(page, centerBtn);
   };
 
   const handleDesktopClose: React.MouseEventHandler<HTMLElement> = (e) => {
@@ -29,7 +31,12 @@ const Navbar = () => {
   };
 
   return (
-    <header className="header-wrapper" onMouseOver={(e) => handleDesktopClose(e)}>
+    <header
+      className="header-wrapper"
+      onMouseOver={(e) => {
+        handleDesktopClose(e);
+      }}
+    >
       <div className="header__mobile">
         <img src={assets.images.LogoSvg} alt="logo" className="header__logo"></img>
         <button
@@ -55,7 +62,9 @@ const Navbar = () => {
                   aria-label={`Open ${subLink.page} menu`}
                   aria-haspopup="true"
                   aria-expanded={desktopMenu && activeSubLink.page === subLink.page}
-                  onMouseOver={(e) => openMenu(e)}
+                  onMouseOver={(e) => {
+                    openMenu(e);
+                  }}
                 >
                   {subLink.page}
                 </button>

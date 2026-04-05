@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+import type { JSX } from "react";
+
 import Submenu from "@/components/Submenu/Submenu";
 
 import { StripeProvider } from "@/contexts/StripeContext/StripeProvider";
@@ -9,14 +11,19 @@ import { useStripeContext } from "@/hooks/useStripeContext";
 
 import { mockSubLinks } from "@tests/__mocks__/subLinks.mock";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
-};
+}
 
-const OpenDesktopMenuButton = ({ page }: { page: string }) => {
+const OpenDesktopMenuButton = ({ page }: { page: string }): JSX.Element => {
   const { handleDesktopMenuOpen } = useStripeContext();
   return (
-    <button data-testid="open-submenu" onClick={() => handleDesktopMenuOpen(page, 0)}>
+    <button
+      data-testid="open-submenu"
+      onClick={() => {
+        handleDesktopMenuOpen(page, 0);
+      }}
+    >
       Open
     </button>
   );

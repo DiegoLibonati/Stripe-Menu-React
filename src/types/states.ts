@@ -1,4 +1,4 @@
-import { SubLink } from "@/types/app";
+import type { SubLink } from "@/types/app";
 
 export interface StripeState extends Record<string, unknown> {
   mobileMenu: boolean;

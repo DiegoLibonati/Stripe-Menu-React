@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+import type { JSX } from "react";
+
 import Sidebar from "@/components/Sidebar/Sidebar";
 
 import { StripeProvider } from "@/contexts/StripeContext/StripeProvider";
@@ -9,11 +11,11 @@ import { useStripeContext } from "@/hooks/useStripeContext";
 
 import { mockSubLinks } from "@tests/__mocks__/subLinks.mock";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
-};
+}
 
-const OpenButton = () => {
+const OpenButton = (): JSX.Element => {
   const { handleMobileMenuOpen } = useStripeContext();
   return (
     <button data-testid="open-sidebar" onClick={handleMobileMenuOpen}>

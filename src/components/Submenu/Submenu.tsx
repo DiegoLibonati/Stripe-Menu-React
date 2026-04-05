@@ -1,14 +1,16 @@
 import { useRef, useEffect } from "react";
 import { FaCreditCard, FaBook, FaBriefcase } from "react-icons/fa";
 
+import type { JSX } from "react";
+
 import { useStripeContext } from "@/hooks/useStripeContext";
 
 import "@/components/Submenu/Submenu.css";
 
-const Submenu = () => {
+const Submenu = (): JSX.Element => {
   const subMenuHtml = useRef<HTMLElement | null>(null);
 
-  const { stripeState } = useStripeContext()!;
+  const { stripeState } = useStripeContext();
   const { desktopMenu, subLink, location } = stripeState;
   const { page, links } = subLink;
 

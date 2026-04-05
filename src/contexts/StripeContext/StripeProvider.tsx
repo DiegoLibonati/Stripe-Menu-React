@@ -1,13 +1,14 @@
 import { useState } from "react";
 
-import { StripeState } from "@/types/states";
-import { StripeProviderProps } from "@/types/props";
+import type { JSX } from "react";
+import type { StripeState } from "@/types/states";
+import type { StripeProviderProps } from "@/types/props";
 
 import { StripeContext } from "@/contexts/StripeContext/StripeContext";
 
 import subLinks from "@/constants/subLinks";
 
-export const StripeProvider = ({ children }: StripeProviderProps) => {
+export const StripeProvider = ({ children }: StripeProviderProps): JSX.Element => {
   const [stripeState, setStripeState] = useState<StripeState>({
     mobileMenu: false,
     desktopMenu: false,

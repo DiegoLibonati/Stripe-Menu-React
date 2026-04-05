@@ -4,9 +4,9 @@ import StripePage from "@/pages/StripePage/StripePage";
 
 import { StripeProvider } from "@/contexts/StripeContext/StripeProvider";
 
-type RenderPage = {
+interface RenderPage {
   container: HTMLElement;
-};
+}
 
 const renderPage = (): RenderPage => {
   const { container } = render(

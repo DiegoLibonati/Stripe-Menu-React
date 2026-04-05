@@ -1,9 +1,9 @@
-import { StripeState } from "@/types/states";
+import type { StripeState } from "@/types/states";
 
-export type StripeContext = {
+export interface StripeContext {
   stripeState: StripeState;
   handleMobileMenuClose: () => void;
   handleMobileMenuOpen: () => void;
   handleDesktopMenuClose: () => void;
   handleDesktopMenuOpen: (text: string, centerBtn: number) => void;
-};
+}

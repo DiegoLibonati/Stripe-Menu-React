@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { UseStripeContext } from "@/types/hooks";
+import type { UseStripeContext } from "@/types/hooks";
 
 import { StripeContext } from "@/contexts/StripeContext/StripeContext";
 

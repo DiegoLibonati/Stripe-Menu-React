@@ -1,9 +1,9 @@
-export type SubLink = {
+export interface SubLink {
   page: string;
   links: Link[];
-};
+}
 
-export type Link = {
+export interface Link {
   label: string;
   url: string;
-};
+}

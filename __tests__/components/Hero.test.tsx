@@ -4,9 +4,9 @@ import Hero from "@/components/Hero/Hero";
 
 import { StripeProvider } from "@/contexts/StripeContext/StripeProvider";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
-};
+}
 
 const renderComponent = (): RenderComponent => {
   const { container } = render(

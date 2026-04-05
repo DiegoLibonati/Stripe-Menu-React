@@ -1,10 +1,12 @@
+import type { JSX } from "react";
+
 import { useStripeContext } from "@/hooks/useStripeContext";
 
 import assets from "@/assets/export";
 
 import "@/components/Hero/Hero.css";
 
-const Hero = () => {
+const Hero = (): JSX.Element => {
   const { handleDesktopMenuClose } = useStripeContext();
 
   return (
