@@ -1,4 +1,4 @@
-import { SubLink } from "@/types/app";
+import type { SubLink } from "@/types/app";
 
 export const mockSubLinks: SubLink[] = [
   {
