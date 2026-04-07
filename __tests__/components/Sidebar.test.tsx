@@ -41,7 +41,7 @@ describe("Sidebar", () => {
 
   it("should not be visible initially", () => {
     const { container } = renderComponent();
-    expect(container.querySelector<HTMLElement>(".sidebar-wrapper")).not.toHaveClass(
+    expect(container.querySelector<HTMLDivElement>(".sidebar-wrapper")).not.toHaveClass(
       "sidebar-wrapper--show"
     );
   });
@@ -76,7 +76,7 @@ describe("Sidebar", () => {
     const user = userEvent.setup();
     const { container } = renderComponent();
     await user.click(screen.getByTestId("open-sidebar"));
-    expect(container.querySelector<HTMLElement>(".sidebar-wrapper")).toHaveClass(
+    expect(container.querySelector<HTMLDivElement>(".sidebar-wrapper")).toHaveClass(
       "sidebar-wrapper--show"
     );
   });
@@ -86,7 +86,7 @@ describe("Sidebar", () => {
     const { container } = renderComponent();
     await user.click(screen.getByTestId("open-sidebar"));
     await user.click(screen.getByRole("button", { name: "Close navigation menu" }));
-    expect(container.querySelector<HTMLElement>(".sidebar-wrapper")).not.toHaveClass(
+    expect(container.querySelector<HTMLDivElement>(".sidebar-wrapper")).not.toHaveClass(
       "sidebar-wrapper--show"
     );
   });
