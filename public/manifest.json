@@ -1,7 +1,7 @@
 {
-  "name": "Stripe Menu",
-  "short_name": "Stripe Menu",
-  "description": "I made a web application that simulates a new style of navbar. It is not the traditional navbar, but it is a menu that will appear if we hover over the nav link. As you scroll through the different nav links, the menu will scroll as well.",
+  "name": "StripeNav",
+  "short_name": "StripeNav",
+  "description": "StripeNav is a frontend application that faithfully replicates the interactive navigation experience found on Stripe's website.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

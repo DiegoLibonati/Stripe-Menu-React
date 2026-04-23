@@ -7,9 +7,9 @@ import Navbar from "@/components/Navbar/Navbar";
 import Submenu from "@/components/Submenu/Submenu";
 import Sidebar from "@/components/Sidebar/Sidebar";
 
-import "@/pages/StripePage/StripePage.css";
+import "@/pages/StripeNavPage/StripeNavPage.css";
 
-const StripePage = (): JSX.Element => {
+const StripeNavPage = (): JSX.Element => {
   return (
     <Fragment>
       <Navbar></Navbar>
@@ -20,4 +20,4 @@ const StripePage = (): JSX.Element => {
   );
 };
 
-export default StripePage;
+export default StripeNavPage;

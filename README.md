@@ -1,4 +1,4 @@
-# Stripe Menu React
+# StripeNav
 
 ## Educational Purpose
 
@@ -17,7 +17,13 @@ The application will open automatically at `http://localhost:3000`
 
 ## Description
 
-I made a web application that simulates a new style of navbar. It is not the traditional navbar, but it is a menu that will appear if we hover over the nav link. As you scroll through the different nav links, the menu will scroll as well.
+**StripeNav** is a frontend application that faithfully replicates the interactive navigation experience found on Stripe's website. It features a dynamic, context-aware navigation menu that goes beyond a traditional navbar: instead of static dropdowns, it renders a floating submenu panel that smoothly follows the user's cursor as they hover across different navigation links — transitioning content and repositioning itself horizontally in real time to stay anchored to the active link.
+
+The desktop experience centers around a hover-driven submenu: each top-level navigation item (Products, Developers, Company) reveals a dedicated panel populated with categorized links and icons. The panel slides and repositions fluidly using synchronized X-axis coordinates, giving the impression that the menu is physically attached to the hovered button. On mobile, the same navigation content is surfaced through a sidebar drawer that opens via a hamburger button, providing a fully responsive experience without sacrificing any content.
+
+All application state — submenu visibility, sidebar visibility, active link data, and submenu position — is managed through a single global `StripeContext` using React's Context API, keeping the component tree clean and predictable. The navigation data itself (link categories, labels, icons) is centralized in a constants file, making it trivial to extend or swap out content.
+
+The project is built with **React 19**, **TypeScript**, and **Vite**, and includes a full test suite using **Jest**, **ts-jest**, and **React Testing Library** with coverage thresholds enforced at 70%. Code quality is maintained via **ESLint**, **Prettier**, and **Husky** pre-commit hooks running lint-staged on every commit.
 
 ## Technologies used
 
@@ -68,11 +74,7 @@ I made a web application that simulates a new style of navbar. It is not the tra
 
 ## Portfolio Link
 
-[`https://www.diegolibonati.com.ar/#/project/Stripe-Menu-React`](https://www.diegolibonati.com.ar/#/project/Stripe-Menu-React)
-
-## Video
-
-https://user-images.githubusercontent.com/99032604/199617642-cbe53bbe-07a3-4e08-a153-0b75c1994920.mp4
+[`https://www.diegolibonati.com.ar/#/project/stripe-nav`](https://www.diegolibonati.com.ar/#/project/stripe-nav)
 
 ## Testing
 

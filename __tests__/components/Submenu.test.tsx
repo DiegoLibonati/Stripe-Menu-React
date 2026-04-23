@@ -1,85 +1,99 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import type { JSX } from "react";
+import type { JSX, ReactNode } from "react";
+import type { RenderResult } from "@testing-library/react";
 
+import Navbar from "@/components/Navbar/Navbar";
 import Submenu from "@/components/Submenu/Submenu";
 
 import { StripeProvider } from "@/contexts/StripeContext/StripeProvider";
 
-import { useStripeContext } from "@/hooks/useStripeContext";
+jest.mock("@/constants/subLinks", () => {
+  const { mockSubLinks } = jest.requireActual("@tests/__mocks__/subLinks.mock");
+  return { __esModule: true, default: mockSubLinks };
+});
 
-import { mockSubLinks } from "@tests/__mocks__/subLinks.mock";
+const wrapper = ({ children }: { children: ReactNode }): JSX.Element => (
+  <StripeProvider>{children}</StripeProvider>
+);
 
-interface RenderComponent {
-  container: HTMLElement;
-}
+const renderComponent = (): RenderResult => render(<Submenu />, { wrapper });
 
-const OpenDesktopMenuButton = ({ page }: { page: string }): JSX.Element => {
-  const { handleDesktopMenuOpen } = useStripeContext();
-  return (
-    <button
-      data-testid="open-submenu"
-      onClick={() => {
-        handleDesktopMenuOpen(page, 0);
-      }}
-    >
-      Open
-    </button>
-  );
-};
-
-const renderComponent = (page = "Products"): RenderComponent => {
-  const { container } = render(
+const renderWithNavbar = (): RenderResult =>
+  render(
     <StripeProvider>
-      <OpenDesktopMenuButton page={page} />
+      <Navbar />
       <Submenu />
     </StripeProvider>
   );
-  return { container };
-};
 
 describe("Submenu", () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
+  describe("rendering", () => {
+    it("should render the submenu without the show class initially", () => {
+      const { container } = renderComponent();
+      expect(container.querySelector(".submenu")).not.toHaveClass("submenu--show");
+    });
 
-  it("should not be visible initially", () => {
-    const { container } = renderComponent();
-    expect(container.querySelector<HTMLElement>("aside.submenu")).not.toHaveClass("submenu--show");
-  });
+    it("should render with left style set to 0px via useEffect", () => {
+      const { container } = renderComponent();
+      expect(container.querySelector(".submenu")).toHaveStyle({ left: "0px" });
+    });
 
-  it("should become visible when desktop menu is opened", async () => {
-    const user = userEvent.setup();
-    const { container } = renderComponent();
-    await user.click(screen.getByTestId("open-submenu"));
-    expect(container.querySelector<HTMLElement>("aside.submenu")).toHaveClass("submenu--show");
-  });
+    it("should render an empty title initially", () => {
+      const { container } = renderComponent();
+      expect(container.querySelector(".submenu__title")?.textContent).toBe("");
+    });
 
-  it("should display the page title when opened", async () => {
-    const user = userEvent.setup();
-    renderComponent("Products");
-    await user.click(screen.getByTestId("open-submenu"));
-    expect(screen.getByRole("heading", { name: "Products" })).toBeInTheDocument();
-  });
-
-  it("should display the links for the active page when opened", async () => {
-    const user = userEvent.setup();
-    renderComponent("Products");
-    await user.click(screen.getByTestId("open-submenu"));
-    const productsLinks = mockSubLinks.find((s) => s.page === "Products")!.links;
-    productsLinks.forEach(({ label }) => {
-      expect(screen.getByRole("link", { name: label })).toBeInTheDocument();
+    it("should render no links initially", () => {
+      renderComponent();
+      expect(screen.queryAllByRole("link")).toHaveLength(0);
     });
   });
 
-  it("should update links when a different page is opened", async () => {
-    const user = userEvent.setup();
-    renderComponent("Developers");
-    await user.click(screen.getByTestId("open-submenu"));
-    const developersLinks = mockSubLinks.find((s) => s.page === "Developers")!.links;
-    developersLinks.forEach(({ label }) => {
-      expect(screen.getByRole("link", { name: label })).toBeInTheDocument();
+  describe("rendering with desktop menu open", () => {
+    it("should apply the show class when the desktop menu is open", async () => {
+      const user = userEvent.setup();
+      const { container } = renderWithNavbar();
+      await user.hover(screen.getByRole("button", { name: "Open Products menu" }));
+      expect(container.querySelector(".submenu")).toHaveClass("submenu--show");
+    });
+
+    it("should render the Products title and links", async () => {
+      const user = userEvent.setup();
+      const { container } = renderWithNavbar();
+      await user.hover(screen.getByRole("button", { name: "Open Products menu" }));
+      expect(container.querySelector(".submenu__title")?.textContent).toBe("Products");
+      expect(screen.getByRole("link", { name: "payment" })).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: "terminal" })).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: "connect" })).toBeInTheDocument();
+    });
+
+    it("should render the Developers title and links", async () => {
+      const user = userEvent.setup();
+      const { container } = renderWithNavbar();
+      await user.hover(screen.getByRole("button", { name: "Open Developers menu" }));
+      expect(container.querySelector(".submenu__title")?.textContent).toBe("Developers");
+      expect(screen.getByRole("link", { name: "plugins" })).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: "libraries" })).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: "help" })).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: "billing" })).toBeInTheDocument();
+    });
+
+    it("should render the Company title and links", async () => {
+      const user = userEvent.setup();
+      const { container } = renderWithNavbar();
+      await user.hover(screen.getByRole("button", { name: "Open Company menu" }));
+      expect(container.querySelector(".submenu__title")?.textContent).toBe("Company");
+      expect(screen.getByRole("link", { name: "about" })).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: "customers" })).toBeInTheDocument();
+    });
+
+    it("should render links with the correct href", async () => {
+      const user = userEvent.setup();
+      renderWithNavbar();
+      await user.hover(screen.getByRole("button", { name: "Open Products menu" }));
+      expect(screen.getByRole("link", { name: "payment" })).toHaveAttribute("href", "/products");
     });
   });
 });
