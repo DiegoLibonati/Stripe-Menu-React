@@ -1,4 +1,4 @@
-# StripeNav
+# Stripe Nav
 
 ## Educational Purpose
 
@@ -17,7 +17,7 @@ The application will open automatically at `http://localhost:3000`
 
 ## Description
 
-**StripeNav** is a frontend application that faithfully replicates the interactive navigation experience found on Stripe's website. It features a dynamic, context-aware navigation menu that goes beyond a traditional navbar: instead of static dropdowns, it renders a floating submenu panel that smoothly follows the user's cursor as they hover across different navigation links — transitioning content and repositioning itself horizontally in real time to stay anchored to the active link.
+**Stripe Nav** is a frontend application that faithfully replicates the interactive navigation experience found on Stripe's website. It features a dynamic, context-aware navigation menu that goes beyond a traditional navbar: instead of static dropdowns, it renders a floating submenu panel that smoothly follows the user's cursor as they hover across different navigation links — transitioning content and repositioning itself horizontally in real time to stay anchored to the active link.
 
 The desktop experience centers around a hover-driven submenu: each top-level navigation item (Products, Developers, Company) reveals a dedicated panel populated with categorized links and icons. The panel slides and repositions fluidly using synchronized X-axis coordinates, giving the impression that the menu is physically attached to the hovered button. On mobile, the same navigation content is surfaced through a sidebar drawer that opens via a hamburger button, providing a fully responsive experience without sacrificing any content.
 

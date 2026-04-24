@@ -1,7 +1,7 @@
 {
-  "name": "StripeNav",
-  "short_name": "StripeNav",
-  "description": "StripeNav is a frontend application that faithfully replicates the interactive navigation experience found on Stripe's website.",
+  "name": "Stripe Nav",
+  "short_name": "Stripe Nav",
+  "description": "Stripe Nav is a frontend application that faithfully replicates the interactive navigation experience found on Stripe's website.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
