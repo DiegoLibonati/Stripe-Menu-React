@@ -32,17 +32,17 @@ describe("Submenu", () => {
   describe("rendering", () => {
     it("should render the submenu without the show class initially", () => {
       const { container } = renderComponent();
-      expect(container.querySelector(".submenu")).not.toHaveClass("submenu--show");
+      expect(container.querySelector<HTMLElement>(".submenu")).not.toHaveClass("submenu--show");
     });
 
     it("should render with left style set to 0px via useEffect", () => {
       const { container } = renderComponent();
-      expect(container.querySelector(".submenu")).toHaveStyle({ left: "0px" });
+      expect(container.querySelector<HTMLElement>(".submenu")).toHaveStyle({ left: "0px" });
     });
 
     it("should render an empty title initially", () => {
       const { container } = renderComponent();
-      expect(container.querySelector(".submenu__title")?.textContent).toBe("");
+      expect(container.querySelector<HTMLHeadingElement>(".submenu__title")?.textContent).toBe("");
     });
 
     it("should render no links initially", () => {
@@ -56,14 +56,16 @@ describe("Submenu", () => {
       const user = userEvent.setup();
       const { container } = renderWithNavbar();
       await user.hover(screen.getByRole("button", { name: "Open Products menu" }));
-      expect(container.querySelector(".submenu")).toHaveClass("submenu--show");
+      expect(container.querySelector<HTMLElement>(".submenu")).toHaveClass("submenu--show");
     });
 
     it("should render the Products title and links", async () => {
       const user = userEvent.setup();
       const { container } = renderWithNavbar();
       await user.hover(screen.getByRole("button", { name: "Open Products menu" }));
-      expect(container.querySelector(".submenu__title")?.textContent).toBe("Products");
+      expect(container.querySelector<HTMLHeadingElement>(".submenu__title")?.textContent).toBe(
+        "Products"
+      );
       expect(screen.getByRole("link", { name: "payment" })).toBeInTheDocument();
       expect(screen.getByRole("link", { name: "terminal" })).toBeInTheDocument();
       expect(screen.getByRole("link", { name: "connect" })).toBeInTheDocument();
@@ -73,7 +75,9 @@ describe("Submenu", () => {
       const user = userEvent.setup();
       const { container } = renderWithNavbar();
       await user.hover(screen.getByRole("button", { name: "Open Developers menu" }));
-      expect(container.querySelector(".submenu__title")?.textContent).toBe("Developers");
+      expect(container.querySelector<HTMLHeadingElement>(".submenu__title")?.textContent).toBe(
+        "Developers"
+      );
       expect(screen.getByRole("link", { name: "plugins" })).toBeInTheDocument();
       expect(screen.getByRole("link", { name: "libraries" })).toBeInTheDocument();
       expect(screen.getByRole("link", { name: "help" })).toBeInTheDocument();
@@ -84,7 +88,9 @@ describe("Submenu", () => {
       const user = userEvent.setup();
       const { container } = renderWithNavbar();
       await user.hover(screen.getByRole("button", { name: "Open Company menu" }));
-      expect(container.querySelector(".submenu__title")?.textContent).toBe("Company");
+      expect(container.querySelector<HTMLHeadingElement>(".submenu__title")?.textContent).toBe(
+        "Company"
+      );
       expect(screen.getByRole("link", { name: "about" })).toBeInTheDocument();
       expect(screen.getByRole("link", { name: "customers" })).toBeInTheDocument();
     });

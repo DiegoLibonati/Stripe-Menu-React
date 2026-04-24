@@ -32,7 +32,7 @@ describe("Sidebar", () => {
   describe("rendering", () => {
     it("should render the sidebar wrapper without the show class initially", () => {
       const { container } = renderComponent();
-      const sidebarWrapper = container.querySelector(".sidebar-wrapper");
+      const sidebarWrapper = container.querySelector<HTMLDivElement>(".sidebar-wrapper");
       expect(sidebarWrapper).toBeInTheDocument();
       expect(sidebarWrapper).not.toHaveClass("sidebar-wrapper--show");
     });
@@ -86,7 +86,9 @@ describe("Sidebar", () => {
       const user = userEvent.setup();
       const { container } = renderWithNavbar();
       await user.click(screen.getByRole("button", { name: "Open navigation menu" }));
-      expect(container.querySelector(".sidebar-wrapper")).toHaveClass("sidebar-wrapper--show");
+      expect(container.querySelector<HTMLDivElement>(".sidebar-wrapper")).toHaveClass(
+        "sidebar-wrapper--show"
+      );
     });
 
     it("should hide the sidebar when the close button is clicked", async () => {
@@ -94,7 +96,9 @@ describe("Sidebar", () => {
       const { container } = renderWithNavbar();
       await user.click(screen.getByRole("button", { name: "Open navigation menu" }));
       await user.click(screen.getByRole("button", { name: "Close navigation menu" }));
-      expect(container.querySelector(".sidebar-wrapper")).not.toHaveClass("sidebar-wrapper--show");
+      expect(container.querySelector<HTMLDivElement>(".sidebar-wrapper")).not.toHaveClass(
+        "sidebar-wrapper--show"
+      );
     });
   });
 });

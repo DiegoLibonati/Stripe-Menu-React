@@ -18,7 +18,7 @@ describe("Hero", () => {
   describe("rendering", () => {
     it("should render the hero section", () => {
       const { container } = renderComponent();
-      expect(container.querySelector(".hero")).toBeInTheDocument();
+      expect(container.querySelector<HTMLElement>(".hero")).toBeInTheDocument();
     });
 
     it("should render the page heading", () => {

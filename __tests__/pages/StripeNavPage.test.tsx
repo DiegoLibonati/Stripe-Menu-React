@@ -28,12 +28,14 @@ describe("StripeNavPage", () => {
 
     it("should render the submenu as closed initially", () => {
       const { container } = renderPage();
-      expect(container.querySelector(".submenu")).not.toHaveClass("submenu--show");
+      expect(container.querySelector<HTMLElement>(".submenu")).not.toHaveClass("submenu--show");
     });
 
     it("should render the sidebar as closed initially", () => {
       const { container } = renderPage();
-      expect(container.querySelector(".sidebar-wrapper")).not.toHaveClass("sidebar-wrapper--show");
+      expect(container.querySelector<HTMLDivElement>(".sidebar-wrapper")).not.toHaveClass(
+        "sidebar-wrapper--show"
+      );
     });
 
     it("should render the hero section heading", () => {
@@ -52,7 +54,9 @@ describe("StripeNavPage", () => {
       const user = userEvent.setup();
       const { container } = renderPage();
       await user.click(screen.getByRole("button", { name: "Open navigation menu" }));
-      expect(container.querySelector(".sidebar-wrapper")).toHaveClass("sidebar-wrapper--show");
+      expect(container.querySelector<HTMLDivElement>(".sidebar-wrapper")).toHaveClass(
+        "sidebar-wrapper--show"
+      );
     });
 
     it("should close the sidebar when the close button is clicked", async () => {
@@ -60,23 +64,25 @@ describe("StripeNavPage", () => {
       const { container } = renderPage();
       await user.click(screen.getByRole("button", { name: "Open navigation menu" }));
       await user.click(screen.getByRole("button", { name: "Close navigation menu" }));
-      expect(container.querySelector(".sidebar-wrapper")).not.toHaveClass("sidebar-wrapper--show");
+      expect(container.querySelector<HTMLDivElement>(".sidebar-wrapper")).not.toHaveClass(
+        "sidebar-wrapper--show"
+      );
     });
 
     it("should open the submenu when a nav button is hovered", async () => {
       const user = userEvent.setup();
       const { container } = renderPage();
       await user.hover(screen.getByRole("button", { name: "Open Products menu" }));
-      expect(container.querySelector(".submenu")).toHaveClass("submenu--show");
+      expect(container.querySelector<HTMLElement>(".submenu")).toHaveClass("submenu--show");
     });
 
     it("should close the submenu when the hero section is hovered", async () => {
       const user = userEvent.setup();
       const { container } = renderPage();
       await user.hover(screen.getByRole("button", { name: "Open Products menu" }));
-      expect(container.querySelector(".submenu")).toHaveClass("submenu--show");
+      expect(container.querySelector<HTMLElement>(".submenu")).toHaveClass("submenu--show");
       await user.hover(container.querySelector<HTMLElement>(".hero")!);
-      expect(container.querySelector(".submenu")).not.toHaveClass("submenu--show");
+      expect(container.querySelector<HTMLElement>(".submenu")).not.toHaveClass("submenu--show");
     });
   });
 });
