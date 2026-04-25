@@ -5,14 +5,30 @@ import type { JSX, ReactNode } from "react";
 import type { RenderResult } from "@testing-library/react";
 
 import Hero from "@/components/Hero/Hero";
+import Navbar from "@/components/Navbar/Navbar";
+import Submenu from "@/components/Submenu/Submenu";
 
 import { StripeProvider } from "@/contexts/StripeContext/StripeProvider";
+
+jest.mock("@/constants/subLinks", () => {
+  const { mockSubLinks } = jest.requireActual("@tests/__mocks__/subLinks.mock");
+  return { __esModule: true, default: mockSubLinks };
+});
 
 const wrapper = ({ children }: { children: ReactNode }): JSX.Element => (
   <StripeProvider>{children}</StripeProvider>
 );
 
 const renderComponent = (): RenderResult => render(<Hero />, { wrapper });
+
+const renderWithAll = (): RenderResult =>
+  render(
+    <StripeProvider>
+      <Navbar />
+      <Submenu />
+      <Hero />
+    </StripeProvider>
+  );
 
 describe("Hero", () => {
   describe("rendering", () => {
@@ -48,12 +64,13 @@ describe("Hero", () => {
   });
 
   describe("behavior", () => {
-    it("should call handleDesktopMenuClose when the section is hovered", async () => {
+    it("should close the desktop menu when the section is hovered", async () => {
       const user = userEvent.setup();
-      const { container } = renderComponent();
-      const section = container.querySelector<HTMLElement>(".hero");
-      await user.hover(section!);
-      expect(section).toBeInTheDocument();
+      const { container } = renderWithAll();
+      await user.hover(screen.getByRole("button", { name: "Open Products menu" }));
+      expect(container.querySelector<HTMLElement>(".submenu")).toHaveClass("submenu--show");
+      await user.hover(container.querySelector<HTMLElement>(".hero")!);
+      expect(container.querySelector<HTMLElement>(".submenu")).not.toHaveClass("submenu--show");
     });
   });
 });
