@@ -1,4 +1,4 @@
-# Stripe Nav
+# StripeNav
 
 ## Educational Purpose
 
@@ -6,18 +6,9 @@ This project was created primarily for **educational and learning purposes**.
 While it is well-structured and could technically be used in production, it is **not intended for commercialization**.  
 The main goal is to explore and demonstrate best practices, patterns, and technologies in software development.
 
-## Getting Started
-
-1. Clone the repository
-2. Navigate to the project folder
-3. Execute: `npm install`
-4. Execute: `npm run dev`
-
-The application will open automatically at `http://localhost:3000`
-
 ## Description
 
-**Stripe Nav** is a frontend application that faithfully replicates the interactive navigation experience found on Stripe's website. It features a dynamic, context-aware navigation menu that goes beyond a traditional navbar: instead of static dropdowns, it renders a floating submenu panel that smoothly follows the user's cursor as they hover across different navigation links — transitioning content and repositioning itself horizontally in real time to stay anchored to the active link.
+**StripeNav** is a frontend application that faithfully replicates the interactive navigation experience found on Stripe's website. It features a dynamic, context-aware navigation menu that goes beyond a traditional navbar: instead of static dropdowns, it renders a floating submenu panel that smoothly follows the user's cursor as they hover across different navigation links — transitioning content and repositioning itself horizontally in real time to stay anchored to the active link.
 
 The desktop experience centers around a hover-driven submenu: each top-level navigation item (Products, Developers, Company) reveals a dedicated panel populated with categorized links and icons. The panel slides and repositions fluidly using synchronized X-axis coordinates, giving the impression that the menu is physically attached to the hovered button. On mobile, the same navigation content is surfaced through a sidebar drawer that opens via a hamburger button, providing a fully responsive experience without sacrificing any content.
 
@@ -34,6 +25,8 @@ The project is built with **React 19**, **TypeScript**, and **Vite**, and includ
 5. CSS3
 
 ## Libraries used
+
+The following libraries back the stack listed above:
 
 #### Dependencies
 
@@ -73,11 +66,20 @@ The project is built with **React 19**, **TypeScript**, and **Vite**, and includ
 "vite": "^7.1.6"
 ```
 
-## Portfolio Link
+## Getting Started
 
-[`https://www.diegolibonati.com.ar/#/project/stripe-nav`](https://www.diegolibonati.com.ar/#/project/stripe-nav)
+With the stack and dependencies covered, the project runs locally using the standard Vite workflow:
+
+1. Clone the repository
+2. Navigate to the project folder
+3. Execute: `npm install`
+4. Execute: `npm run dev`
+
+The application will open automatically at `http://localhost:3000`.
 
 ## Testing
+
+Once the app is running locally, the test suite verifies that the navigation behavior, context state, and components remain correct.
 
 1. Navigate to the project folder
 2. Execute: `npm test`
@@ -88,7 +90,11 @@ For coverage report:
 npm run test:coverage
 ```
 
-## Security
+Coverage thresholds are enforced at 70% for branches, functions, lines, and statements.
+
+## Security Audit
+
+Beyond functional tests, the project also includes dependency and code-health checks to keep the codebase safe and clean.
 
 ### npm audit
 
@@ -115,3 +121,7 @@ npm run doctor -- --verbose
 ## Known Issues
 
 None at the moment.
+
+## Portfolio Link
+
+[`https://www.diegolibonati.com.ar/#/project/stripe-nav`](https://www.diegolibonati.com.ar/#/project/stripe-nav)
