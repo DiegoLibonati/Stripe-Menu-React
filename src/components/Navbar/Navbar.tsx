@@ -6,7 +6,7 @@ import { useStripeContext } from "@/hooks/useStripeContext";
 
 import subLinks from "@/constants/subLinks";
 
-import assets from "@/assets/export";
+import assets from "@/assets/index";
 
 import "@/components/Navbar/Navbar.css";
 

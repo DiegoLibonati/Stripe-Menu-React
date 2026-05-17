@@ -2,7 +2,7 @@ import type { JSX } from "react";
 
 import { useStripeContext } from "@/hooks/useStripeContext";
 
-import assets from "@/assets/export";
+import assets from "@/assets/index";
 
 import "@/components/Hero/Hero.css";
 
